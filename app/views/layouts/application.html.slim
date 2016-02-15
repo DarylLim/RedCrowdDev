@@ -16,7 +16,7 @@ html
           ul.nav.navbar-nav#menu
             li= link_to "Browse Companies", "#"
             li= link_to "Investors", "#"
-            li= link_to "Entrepreneurs", "#"
+            li= link_to "Business Owners", "#"
             li= link_to "FAQ", "#"
             li.dropdown
               = link_to "#", role: 'button', class: 'dropdown-toggle', 'data-toggle' => "dropdown" do
@@ -39,24 +39,30 @@ html
         = yield
     .container
       .page-header
-        .row
-          .col-sm-6
-            h2 Investing?
-          .col-sm-6
-            h2 Raising funds?
+        h2 Get created with us
       .lead
-        'Call us to discuss crowdfunding or our services on <b>+46 (0) 8-559 207 60</b> or <b> contact us </b> via email
-    .container
+        div
+          'Call us to discuss crowdfunding or our services on <b>+46 (0) 8-559 207 60</b> or <b> contact us </b> via email
+        div
+          button type="button" class="btn btn-success" Investing
+          |  
+          button type="button" class="btn btn-success" Raising funds
+    .container.alert.alert-info
       .row
-
+        .col-md-8
+          h2 Intelegent growth with FundedByMe 
         .col-md-4
-          h2 Scalable and structured
+          p
+            a.btn.btn-default.pull-right href='#' More benefits
+      .row
+        .col-md-4
+          h3 Scalable and structured
           p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
         .col-md-4
-          h2 Marketing value
+          h3 Marketing value
           p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
         .col-md-4
-          h2 Passionate people
+          h3 Passionate people
           p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
 
     = render 'shared/footer'
