@@ -16,7 +16,7 @@ html
           ul.nav.navbar-nav#menu
             li= link_to "Browse Companies", "#"
             li= link_to "Investors", "#"
-            li= link_to "Businesses", "#"
+            li= link_to "Entrepreneurs", "#"
             li= link_to "FAQ", "#"
             li.dropdown
               = link_to "#", role: 'button', class: 'dropdown-toggle', 'data-toggle' => "dropdown" do
@@ -28,7 +28,7 @@ html
                 li role="presentation" = link_to "Partners", "#", role: 'menuitem'
                 li role="presentation" = link_to "Contact", "#", role: 'menuitem'
           ul.nav.navbar-nav.pull-right
-            li= link_to "Sign IN", '#'
+            li= link_to "Login", '#'
             li= link_to "Sign up", '#'
     
     .container
@@ -37,3 +37,26 @@ html
           = content_tag :div, msg, id: kind, class: 'alert alert-warning'
       #page
         = yield
+    .container
+      .page-header
+        .row
+          .col-sm-6
+            h2 Investing?
+          .col-sm-6
+            h2 Raising funds?
+      .lead
+        'Call us to discuss crowdfunding or our services on <b>+46 (0) 8-559 207 60</b> or <b> contact us </b> via email
+    .container
+      .row
+
+        .col-md-4
+          h2 Scalable and structured
+          p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        .col-md-4
+          h2 Marketing value
+          p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        .col-md-4
+          h2 Passionate people
+          p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+
+    = render 'shared/footer'

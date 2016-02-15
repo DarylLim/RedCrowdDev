@@ -30,6 +30,8 @@ gem 'bootstrap-sass', '~> 3.2.0'
 # for html.slim
 gem 'slim'
 
+gem 'bootstrap-social-rails'
+gem "font-awesome-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
