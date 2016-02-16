@@ -21,9 +21,11 @@
       a.right.carousel-control data-slide="next" href="#carousel" role="button" 
         span.glyphicon.glyphicon-chevron-right aria-hidden="true" 
         span.sr-only Next
-br
 
-- ['Rewards', 'Equity', 'Debt'].each do |title|
+- ['Rewards', 'Equity', 'Debt'].each_with_index do |title, index|
+  - images = [[1, 2, 3], [3, 2, 1], [2, 1, 3]]
+
+  hr
 
   .row
     .col-sm-12
@@ -34,7 +36,7 @@ br
           a href='#' class='btn btn-default pull-right' style='margin: 20px;' All companies
     .col-sm-6.col-md-4
       .thumbnail
-        img alt="Rewards Campaign" src="fake/company1.jpg" /
+        img alt="Rewards Campaign" src="fake/company#{images[index][0]}.jpg" /
         .caption
           h3 Companign 1
           p
@@ -42,7 +44,7 @@ br
     
     .col-sm-6.col-md-4
       .thumbnail
-        img alt="Equity Campaign" src="fake/company2.jpg" /
+        img alt="Equity Campaign" src="fake/company#{images[index][1]}.jpg" /
         .caption
           h3 Companign 2
           p
@@ -50,9 +52,50 @@ br
 
     .col-sm-6.col-md-4
       .thumbnail
-        img alt="Debt Campaign" src="fake/company3.jpg" /
+        img alt="Debt Campaign" src="fake/company#{images[index][2]}.jpg" /
         .caption
           h3 Compaign 3
           p
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna lorem. In fringilla libero id turpis suscipit, dapibus placerat dui eleifend. Cras sit amet nulla purus. Praesent aliquet ipsum vel lacus tincidunt consequat. Quisque non turpis eu urna hendrerit viverra eu id sapien. Nam eu nunc hendrerit, suscipit eros nec, consequat risus. Vivamus dictum arcu nec arcu maximus, vel sollicitudin odio sagittis.
+hr
+.row
+  .col-sm-12
+    .page-header
+      h2 Get created with us
+    .lead
+      div
+        'Call us to discuss crowdfunding or our services on <b>+46 (0) 8-559 207 60</b> or <b> contact us </b> via email
+      div
+        button type="button" class="btn btn-success" Investing
+        |  
+        button type="button" class="btn btn-success" Raising funds
+
+.row 
+  .col-sm-12
+    .row
+      .col-sm-10
+        h2 Sucess Story
+      .col-sm-2
+        a href='#' class='btn btn-default pull-right' style='margin: 20px;' All success stories
+  .col-sm-4
+    .thumbnail
+      img alt="Debt Campaign" src="fake/company3.jpg" /
+      .caption
+        h3 Compaign 1
+        p
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna lorem. In fringilla libero id turpis suscipit, dapibus placerat dui eleifend. Cras sit amet nulla purus. Praesent aliquet ipsum vel lacus tincidunt consequat. Quisque non turpis eu urna hendrerit viverra eu id sapien. Nam eu nunc hendrerit, suscipit eros nec, consequat risus. Vivamus dictum arcu nec arcu maximus, vel sollicitudin odio sagittis.
+  .col-sm-4
+    .thumbnail
+      img alt="Debt Campaign" src="fake/company2.jpg" /
+      .caption
+        h3 Compaign 2
+        p
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna lorem. In fringilla libero id turpis suscipit, dapibus placerat dui eleifend. Cras sit amet nulla purus. Praesent aliquet ipsum vel lacus tincidunt consequat. Quisque non turpis eu urna hendrerit viverra eu id sapien. Nam eu nunc hendrerit, suscipit eros nec, consequat risus. Vivamus dictum arcu nec arcu maximus, vel sollicitudin odio sagittis.
+  .col-sm-4
+    .thumbnail
+      img alt="Debt Campaign" src="fake/company3.jpg" /
+      .caption
+        h3 Compaign 3
+        p
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget urna lorem. In fringilla libero id turpis suscipit, dapibus placerat dui eleifend. Cras sit amet nulla purus. Praesent aliquet ipsum vel lacus tincidunt consequat. Quisque non turpis eu urna hendrerit viverra eu id sapien. Nam eu nunc hendrerit, suscipit eros nec, consequat risus. Vivamus dictum arcu nec arcu maximus, vel sollicitudin odio sagittis.
 
