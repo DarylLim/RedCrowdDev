@@ -50,8 +50,7 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  # gem 'database_cleaner' #чистит тестувую базу
-  # gem 'capybara'
+  gem 'capybara'
 
   #Generate humanize random data
   gem 'forgery' 
