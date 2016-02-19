@@ -1,0 +1,13 @@
+.navbar.navbar-inverse
+  .container
+    .navbar-header
+      = link_to 'RedCrowd', root_url, class: 'navbar-brand'
+    .navbar-collapse.collapse
+      ul.nav.navbar-nav#menu
+        li class="#{topbar_class_list[:browse_companies]}" 
+          = link_to "Investor area", "#"
+      ul.nav.navbar-nav.pull-right
+        li
+          = link_to current_user.email, investor_root_path
+        li
+          = link_to "Sign out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"}

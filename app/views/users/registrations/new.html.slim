@@ -1,0 +1,45 @@
+h2.text-center Register for an account
+.row
+  .col-sm-6
+    .social-block
+      a.btn.btn-lg.btn-block.btn-social.btn-linkedin
+        span.fa.fa-linkedin
+        | Sign in with LinkedIn
+
+      a.btn.btn-lg.btn-block.btn-social.btn-facebook
+        span.fa.fa-facebook
+        | Sign in with Facebook
+
+  .col-sm-6
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      h3
+        | I'D LIKE TO
+      div
+        a.btn.btn-default style='width: 160px; margin-right: 36px' href='#' INVEST
+        |  
+        a.btn.btn-default style='width: 160px;' href='#' RAISE FUNDS
+        br
+        br
+      .form-group
+        = f.label :email
+        = f.email_field :email, autofocus: true, class: 'form-control'
+      div
+        .row
+          .col-sm-6
+            = f.label :first_name
+            = f.text_field :first_name, class: 'form-control'
+          .col-sm-6
+            = f.label :last_name
+            = f.text_field :last_name, class: 'form-control'
+        br
+
+      .form-group
+        = f.label :password
+        = f.password_field :password, autocomplete: "off", class: 'form-control'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+      
+      .actions
+        = f.submit "Sign up", class: 'btn btn-primary'
