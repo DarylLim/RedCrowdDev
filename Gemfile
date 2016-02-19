@@ -32,6 +32,8 @@ gem 'slim'
 
 gem 'bootstrap-social-rails'
 gem "font-awesome-rails"
+
+gem 'devise'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -44,6 +46,16 @@ gem "font-awesome-rails"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'letter_opener', '1.1.2'
+
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  # gem 'database_cleaner' #чистит тестувую базу
+  # gem 'capybara'
+
+  #Generate humanize random data
+  gem 'forgery' 
+
 end
 
 group :development do

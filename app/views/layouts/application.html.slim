@@ -8,29 +8,7 @@ html
     = yield :head
     = csrf_meta_tags
   body 
-    .navbar.navbar-inverse
-      .container
-        .navbar-header
-          = link_to 'RedCrowd', '#', class: 'navbar-brand'
-        .navbar-collapse.collapse
-          ul.nav.navbar-nav#menu
-            li= link_to "Browse Companies", "#"
-            li= link_to "Investors", "#"
-            li= link_to "Business Owners", "#"
-            li= link_to "FAQ", "#"
-            li.dropdown
-              = link_to "#", role: 'button', class: 'dropdown-toggle', 'data-toggle' => "dropdown" do
-                | More 
-                span.caret
-              ul.dropdown-menu role="menu" aria-labelledby="drop1"
-                li role="presentation" = link_to "Success stories", "#", role: 'menuitem'
-                li role="presentation" = link_to "Why Red Crowd?", "#", role: 'menuitem'
-                li role="presentation" = link_to "Partners", "#", role: 'menuitem'
-                li role="presentation" = link_to "Contact", "#", role: 'menuitem'
-          ul.nav.navbar-nav.pull-right
-            li= link_to "Login", '#'
-            li= link_to "Sign up", '#'
-    
+    = render 'shared/topbar'
     .container
       #flashes
         - flash.each do |kind, msg|

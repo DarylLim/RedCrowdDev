@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title RedCrowd
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    meta http-equiv="content-type" content="text/html; charset=utf-8"
+    = yield :head
+    = csrf_meta_tags
+  body 
+    = render 'shared/topbar'
+    .container.devise
+      #flashes
+        - flash.each do |kind, msg|
+          = content_tag :div, msg, id: kind, class: 'alert alert-warning'
+      #page
+        = yield
+    = render 'shared/footer'

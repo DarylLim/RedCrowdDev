@@ -1,0 +1,33 @@
+.navbar.navbar-inverse
+  .container
+    .navbar-header
+      = link_to 'RedCrowd', root_url, class: 'navbar-brand'
+    .navbar-collapse.collapse
+      ul.nav.navbar-nav#menu
+        li class="#{topbar_class_list[:browse_companies]}" 
+          = link_to "Browse Companies", "#"
+        li class="#{topbar_class_list[:investors]}" 
+          = link_to "Investors", "#"
+        li class="#{topbar_class_list[:business_owners]}"
+          = link_to "Business Owners", "#"
+        li class="#{topbar_class_list[:faq]}"
+          = link_to "FAQ", "#"
+        li.dropdown
+          = link_to "#", role: 'button', class: 'dropdown-toggle', 'data-toggle' => "dropdown" do
+            | More 
+            span.caret
+          ul.dropdown-menu role="menu" aria-labelledby="drop1"
+            li role="presentation" = link_to "Success stories", "#", role: 'menuitem'
+            li role="presentation" = link_to "Why Red Crowd?", "#", role: 'menuitem'
+            li role="presentation" = link_to "Partners", "#", role: 'menuitem'
+            li role="presentation" = link_to "Contact", "#", role: 'menuitem'
+      ul.nav.navbar-nav.pull-right
+        - if user_signed_in?
+          li
+            = link_to current_user.email, investor_root_path
+        - else
+          li class="#{topbar_class_list[:login]}" 
+            = link_to "Login", new_user_session_path
+          li class="#{topbar_class_list[:sign_up]}" 
+            = link_to "Sign up", new_user_registration_path
+
