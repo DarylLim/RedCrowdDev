@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   namespace :investor do
     get '/' => "main#index", as: 'root'
   end
+
+  namespace :admin do
+    get '/' => "main#index", as: 'root'
+  end
+
 end
