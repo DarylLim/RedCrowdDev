@@ -20,4 +20,52 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  admin:
+    shared:
+      topbar: 
+        logo: 'RedCrowd'
+        title: 'Admin area'
+        sign_out: 'Sign out'
+      footer:
+
+  investor: 
+    shared:
+      topbar: 
+        logo: 'RedCrowd'
+        title: 'Investor area'
+        sign_out: 'Sign out'
+      footer:
+
+  main:
+    shared:
+      topbar: 
+        logo: 'RedCrowd'
+        browse_companies: "Browse Companies"
+        investors: "Investors"
+        business_owners: "Business Owners"
+        faq: "FAQ"
+        more:
+          title: "More"
+          success_stories: "Success stories"
+          why_red_crowd:   "Why Red Crowd?"
+          partners:        "Partners"
+          contact:        "Contact"
+        sign_out: "Sign out"
+        sign_up: "Sign up"
+        sign_in:  "Login"
+      footer:
+        browse: "Browse"
+        rewards_campaign: "Rewards Campaign"
+        equities_campaign: "Equities Campaign"
+        debt_campaign: "Debt Campaign"
+        about_us: "About us"
+        FAQ: "FAQ"
+        why_red_crowd:   "Why Red Crowd?"
+        partners:        "Partners"
+        contact:        "Contact"
+        term_and_policies: "Terms & Policies"
+        terms_of_use:     "Terms of use"
+        privacy_policies: "Privacy Policies"
+        legal:            "Legal"
+
+

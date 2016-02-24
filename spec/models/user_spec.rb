@@ -14,6 +14,13 @@ RSpec.describe User, type: :model do
     expect(admin.admin?).to eq(true)
   end
 
+  context 'invalid' do
+    it 'does not save if role is not correct' do
+      subject.role = 'incorrect'
+      expect(subject.save).to eq(false)
+    end
+  end
+
   context 'roles' do
     it 'admin?' do
       subject.role = 'admin'

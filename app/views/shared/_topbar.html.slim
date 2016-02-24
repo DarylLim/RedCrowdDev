@@ -1,36 +1,36 @@
 .navbar.navbar-inverse
   .container
     .navbar-header
-      = link_to 'RedCrowd', root_url, class: 'navbar-brand'
+      = link_to t("main.shared.topbar.logo"), root_url, class: 'navbar-brand'
     .navbar-collapse.collapse
       ul.nav.navbar-nav#menu
         li class="#{topbar_class_list[:browse_companies]}" 
-          = link_to "Browse Companies", "#"
+          = link_to t("main.shared.topbar.browse_companies"), "#"
         li class="#{topbar_class_list[:investors]}" 
-          = link_to "Investors", "#"
+          = link_to t("main.shared.topbar.investors"), "#"
         li class="#{topbar_class_list[:business_owners]}"
-          = link_to "Business Owners", "#"
+          = link_to t("main.shared.topbar.business_owners"), "#"
         li class="#{topbar_class_list[:faq]}"
           = link_to "FAQ", "#"
         li.dropdown
           = link_to "#", role: 'button', class: 'dropdown-toggle', 'data-toggle' => "dropdown" do
-            | More 
+            = "  #{t('main.shared.topbar.more.title')}"
             span.caret
           ul.dropdown-menu role="menu" aria-labelledby="drop1"
-            li role="presentation" = link_to "Success stories", "#", role: 'menuitem'
-            li role="presentation" = link_to "Why Red Crowd?", "#", role: 'menuitem'
-            li role="presentation" = link_to "Partners", "#", role: 'menuitem'
-            li role="presentation" = link_to "Contact", "#", role: 'menuitem'
+            li role="presentation" = link_to t('main.shared.topbar.more.success_stories'), "#", role: 'menuitem'
+            li role="presentation" = link_to t('main.shared.topbar.more.why_red_crowd'), "#", role: 'menuitem'
+            li role="presentation" = link_to t('main.shared.topbar.more.partners'), "#", role: 'menuitem'
+            li role="presentation" = link_to t('main.shared.topbar.more.contact'), "#", role: 'menuitem'
       ul.nav.navbar-nav.pull-right
         - if user_signed_in?
           li
-            = link_to current_user.email, investor_root_path
+            = link_to current_user.email, eval("#{current_user.role}_root_path")
           li
-            = link_to "Sign out", destroy_user_session_path, method: :delete
+            = link_to t("main.shared.topbar.sign_out"), destroy_user_session_path, method: :delete
 
         - else
           li class="#{topbar_class_list[:login]}" 
-            = link_to "Login", new_user_session_path
+            = link_to t("main.shared.topbar.sign_in"), new_user_session_path
           li class="#{topbar_class_list[:sign_up]}" 
-            = link_to "Sign up", new_user_registration_path
+            = link_to t("main.shared.topbar.sign_up"), new_user_registration_path
 
