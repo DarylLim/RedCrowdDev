@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :investor do
     get '/' => "main#index", as: 'root'
+    resources :companies, only: [:index, :show, :new, :create, :destroy]
   end
 
   namespace :admin do

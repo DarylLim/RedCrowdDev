@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :companies
+
+
   validates :role, inclusion: ROLES  
   before_validation :set_defaults_role
 
@@ -12,6 +15,7 @@ class User < ActiveRecord::Base
       self.role == role_name
     end
   end
+
   private
     def set_defaults_role
       self.role = 'investor' if self.role.blank?
