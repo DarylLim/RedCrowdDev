@@ -1,3 +1,4 @@
+
 Vagrant.configure('2') do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.network :forwarded_port, guest: 3000, host: 2000
@@ -8,16 +9,31 @@ Vagrant.configure('2') do |config|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
     vb.cpus = 2
   end
-
+  
   config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = ["cookbooks", "cookbooks-additionals"]
+
     chef.add_recipe 'apt'
     chef.add_recipe 'build-essential'
+    chef.add_recipe 'postgresql::client'
+    chef.add_recipe 'postgresql::server'
 
+    chef.add_recipe 'current_project'
+    
     chef.add_recipe 'rvm::vagrant'
     chef.add_recipe 'rvm::system'
     chef.add_recipe 'rvm::user'
 
+    chef.add_recipe "imagemagick"
+    chef.add_recipe "imagemagick::devel"
+
+
     chef.json = {
+      postgresql: {
+        password: {
+          postgres: 'postgres'
+        }
+      },
       rvm: {
         vagrant: {
           system_chef_client: '/opt/chef/bin/chef-client',
@@ -49,8 +65,5 @@ Vagrant.configure('2') do |config|
       }
     }
   end
-
-  config.vm.provision "shell", path: "vendor/vagrant_scripts/setup_psql.sh"
-  config.vm.provision "shell", path: "vendor/vagrant_scripts/setup_imagemagick.sh"
-
+   
 end
