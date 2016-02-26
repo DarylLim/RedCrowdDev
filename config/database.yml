@@ -3,11 +3,17 @@ development:
   database: read_crowd_development
   pool: 5
   timeout: 5000
+  username: vagrant
+  password: vagrant
+
 test:
   adapter: postgresql
   database: read_crowd_test
   pool: 5
   timeout: 5000
+  username: vagrant
+  password: vagrant
+
 
 production:
   adapter: postgresql

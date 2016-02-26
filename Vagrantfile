@@ -65,5 +65,8 @@ Vagrant.configure('2') do |config|
       }
     }
   end
-   
+
+  config.vm.provision "shell", inline: "git config --global user.email '17valexl@gmail.com'"
+  config.vm.provision "shell", inline: "git config --global user.name  'Alexel Volobuev'"
+
 end
