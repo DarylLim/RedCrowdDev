@@ -15,6 +15,17 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => "main#index", as: 'root'
+    resources :companies, only: [] do
+      collection do
+        get :pending
+        get :approved
+      end
+
+      member do
+        get :moderate
+        post :moderate, to: :submit
+      end
+    end
   end
 
 end

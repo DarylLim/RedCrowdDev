@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe Investor::CompaniesController, type: :controller do
 
   let(:valid_attributes) { FactoryGirl.attributes_for(:company) }
@@ -49,6 +48,7 @@ RSpec.describe Investor::CompaniesController, type: :controller do
         post :create, {:company => valid_attributes}, valid_session
         expect(response).to redirect_to(investor_companies_path)
       end
+
     end
 
     context "with invalid params" do

@@ -28,6 +28,10 @@ en:
         title: 'Admin area'
         sign_out: 'Sign out'
       footer:
+    notices:
+      company:
+        approved:  'Company was successfully approved.'
+        rejected:  'Company was rejected.'
 
   investor: 
     shared:

@@ -34,7 +34,12 @@ gem 'slim'
 gem 'bootstrap-social-rails'
 gem "font-awesome-rails"
 
+#for authorization
 gem 'devise'
+
+#For form objects
+gem 'virtus'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
