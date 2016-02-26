@@ -35,6 +35,10 @@ en:
         companies: 'Companies'
         sign_out: 'Sign out'
       footer:
+    notices:
+      company:
+        create:  'Company was successfully created.'
+        destroy: 'Company was successfully destroyed.'
 
   main:
     shared:
