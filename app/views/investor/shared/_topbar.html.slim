@@ -5,7 +5,7 @@
     .navbar-collapse.collapse
       ul.nav.navbar-nav#menu
         li class="#{topbar_class_list[:browse_companies]}" 
-          = link_to t('investor.shared.topbar.title'), "#"
+          = link_to t('investor.shared.topbar.comanies'), investor_companies_path
       ul.nav.navbar-nav.pull-right
         li
           = link_to current_user.email, investor_root_path

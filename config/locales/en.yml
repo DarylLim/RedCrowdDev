@@ -32,7 +32,7 @@ en:
     shared:
       topbar: 
         logo: 'RedCrowd'
-        title: 'Investor area'
+        companies: 'Companies'
         sign_out: 'Sign out'
       footer:
 
