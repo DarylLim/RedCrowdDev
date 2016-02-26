@@ -30,7 +30,7 @@ RSpec.feature 'adding company' do
     expect(page.current_path).to eq(investor_companies_path)
     expect(page).to have_text("First company")
     expect(page).to have_text("Pending")
-
+    expect(page).to have_text("Edit")
   end
 
 end

@@ -6,7 +6,7 @@ class RedCrowd::Admin::Company::Moderate
   attribute :rejection_reason, String
   attribute :company, Company  
   
-  validate :should_have_rejection_reason_if_does_not_approved
+  validates :rejection_reason, presence: true, unless: :approved
 
   def moderate!
     return false unless valid?
@@ -19,10 +19,4 @@ class RedCrowd::Admin::Company::Moderate
     end
   end
 
-  private
-    def should_have_rejection_reason_if_does_not_approved
-      return if approved?
-      return if rejection_reason.present?
-      errors.add(:company, :should_have_rejection_reason_if_does_not_approved)
-    end
 end

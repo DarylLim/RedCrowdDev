@@ -21,17 +21,36 @@
 
 en:
   back: 'Back'
+  
+  date:
+    formats:
+      default: "%Y-%m-%d"
+  time:
+    formats:
+      default: "%d %h %Y %I:%M%p"
+
   admin:
     shared:
       topbar: 
         logo: 'RedCrowd'
-        title: 'Admin area'
+        pending_companies: 'Pending companies'
+        approved_companies: 'Approved companies'
         sign_out: 'Sign out'
       footer:
     notices:
       company:
         approved:  'Company was successfully approved.'
         rejected:  'Company was rejected.'
+
+    companies:
+      index:
+        actions:
+          moderate: 'Moderate'
+        table:
+          '#': '#'
+          name: 'Name'
+          status: 'Status'
+          actions: 'Actions'
 
   investor: 
     shared:
@@ -43,6 +62,7 @@ en:
     notices:
       company:
         create:  'Company was successfully created.'
+        update:  'Company was successfully updated.'
         destroy: 'Company was successfully destroyed.'
     companies:
       index:
@@ -92,3 +112,5 @@ en:
     comapny:
       status:
         pending: 'Pending'
+      approved: "Approved?"
+      rejection_reason: 'Rejection reason'

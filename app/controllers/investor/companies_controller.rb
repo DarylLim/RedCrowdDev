@@ -5,7 +5,24 @@ class Investor::CompaniesController < Investor::BaseController
   end
 
   def show
-    
+    @company = current_user.companies.find(params[:id])
+  end
+
+  def edit
+    @company = current_user.companies.pending.find(params[:id])
+  end
+
+  def update
+    @company = current_user.companies.pending.find(params[:id])
+
+    respond_to do |format|
+      if @company.update_attributes(company_params)
+        format.html {redirect_to investor_companies_path, notice: t("investor.notices.company.update")}
+      else
+        format.html { render :edit }
+      end
+    end
+
   end
 
   def new

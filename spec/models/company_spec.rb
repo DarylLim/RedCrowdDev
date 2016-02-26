@@ -40,4 +40,20 @@ RSpec.describe Company, type: :model do
     expect(company.status).to eq(Company::REJECTED)
   end
 
+  it 'has method approved?' do
+    company.status = Company::APPROVED
+    expect(company.approved?).to eq(true)
+  end
+
+  it 'has method pending?' do
+    company.status = Company::PENDING
+    expect(company.pending?).to eq(true)
+  end
+
+
+  it 'has method rejected?' do
+    company.status = Company::REJECTED
+    expect(company.rejected?).to eq(true)
+  end
+
 end

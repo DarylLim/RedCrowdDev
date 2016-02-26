@@ -1,0 +1,26 @@
+h2 Moderation 
+hr
+= form_for @company, url: { action: "moderate", controller: 'admin/companies'} , html: {class: 'form-horizontal', method: :post} do |f|
+  - if @moderator.errors.present?
+    .alert.alert-danger
+      ul 
+        - @moderator.errors.full_messages.each do |msg|
+          li = msg
+  .form-group
+    label.col-sm-2.control-label
+      = t("entity.company.rejection_reason")
+    .col-sm-4
+      = text_area_tag "company[rejection_reason]", @moderator.rejection_reason, class: 'form-control'
+  .form-group
+    div.col-sm-offset-2.col-sm-10
+      .checkbox
+        label
+          input type="checkbox" name='company[approved]' id='company_approved' value="#{@moderator.approved}"
+          |  
+          = t("entity.company.approved")
+
+  .form-group
+    .col-sm-offset-2.col-sm-4
+      = link_to t('back'), investor_companies_path, class: 'btn btn-default'
+      |  
+      = f.button t('investor.companies.form.actions.submit'), class: 'btn btn-primary'

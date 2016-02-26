@@ -4,8 +4,15 @@
       = link_to t('admin.shared.topbar.logo'), root_url, class: 'navbar-brand'
     .navbar-collapse.collapse
       ul.nav.navbar-nav#menu
-        li class="#{topbar_class_list[:browse_companies]}" 
-          = link_to t('admin.shared.topbar.title'), "#"
+        li class="#{topbar_class_list[:pending_companies]}" 
+          = link_to t('admin.shared.topbar.pending_companies'), pending_admin_companies_path
+
+        li class="#{topbar_class_list[:approved_companies]}" 
+          = link_to t('admin.shared.topbar.approved_companies'), approved_admin_companies_path
+
+        li class="#{topbar_class_list[:rejected_companies]}" 
+          = link_to t('admin.shared.topbar.rejected_companies'), rejected_admin_companies_path
+
       ul.nav.navbar-nav.pull-right
         li
           = link_to current_user.email, admin_root_path

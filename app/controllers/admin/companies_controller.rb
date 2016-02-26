@@ -15,8 +15,17 @@ class Admin::CompaniesController < Admin::BaseController
     end
   end
 
+  def rejected
+    @companies = Company.rejected
+
+    respond_to do |format|
+      format.html { render :index }
+    end
+  end
+
   def moderate
     @company = Company.pending.find(params[:id])
+    @moderator = RedCrowd::Admin::Company::Moderate.new company: @company
   end
 
   def submit

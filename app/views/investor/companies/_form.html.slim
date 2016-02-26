@@ -1,0 +1,11 @@
+= form_for [:investor, @company], html: {class: 'form-horizontal'} do |f|
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-4
+      = f.text_field :name, autofocus: true, class: 'form-control'
+  
+  .form-group
+    .col-sm-offset-2.col-sm-4
+      = link_to t('back'), investor_companies_path, class: 'btn btn-default'
+      |  
+      = f.button t('investor.companies.form.actions.submit'), class: 'btn btn-primary'

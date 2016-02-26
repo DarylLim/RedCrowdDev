@@ -14,6 +14,18 @@ class Company < ActiveRecord::Base
   
   before_validation :set_default_status
 
+  def pending?
+    self.status == PENDING
+  end
+  
+  def approved?
+    self.status == APPROVED
+  end
+
+  def rejected?
+    self.status == REJECTED
+  end
+
   def set_approved!
     self.status = APPROVED
     self.save!  

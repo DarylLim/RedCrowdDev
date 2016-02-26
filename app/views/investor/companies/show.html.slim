@@ -1,0 +1,13 @@
+h1 = @company.name
+table.table.table-bordered
+  thead
+    tr
+      th = t("investor.companies.show.table.#")
+      th = t("investor.companies.show.table.rejection_reason")
+      th = t("investor.companies.show.table.date")
+  tbody
+    - @company.rejection_reasons.each_with_index do |rejection_reason, index|
+      tr
+        td = index + 1
+        td = rejection_reason.content
+        td = rejection_reason.created_at

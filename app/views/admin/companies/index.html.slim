@@ -1,0 +1,16 @@
+table.table.table-bordered
+  thead
+    tr
+      th = t("admin.companies.index.table.#")
+      th = t("admin.companies.index.table.name")
+      th = t("admin.companies.index.table.status")
+      th = t("admin.companies.index.table.actions")
+  tbody
+    - @companies.each_with_index do |company, index|
+      tr
+        td = index + 1
+        td = company.name
+        td = t("entity.company.status.#{company.status}")
+        td
+          - if company.pending?
+            = link_to t("admin.companies.index.actions.moderate"), moderate_admin_company_path(company), class: 'btn btn-info'
