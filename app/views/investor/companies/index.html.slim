@@ -1,0 +1,15 @@
+= link_to t("investor.companies.index.actions.new"), new_investor_company_path, class: 'btn btn-default'
+br
+br
+table.table.table-bordered
+  thead
+    tr
+      th = t("investor.companies.index.table.#")
+      th = t("investor.companies.index.table.name")
+      th = t("investor.companies.index.table.status")
+  tbody
+    - current_user.companies.each_with_index do |company, index|
+      tr
+        td = index + 1
+        td = company.name
+        td = t("entity.company.status.#{company.status}")

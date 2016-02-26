@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  back: 'Back'
   admin:
     shared:
       topbar: 
@@ -39,7 +40,18 @@ en:
       company:
         create:  'Company was successfully created.'
         destroy: 'Company was successfully destroyed.'
-
+    companies:
+      index:
+        actions:
+          new: 'Add new company'
+        table:
+          '#': '#'
+          name: 'Name'
+          status: 'Status'
+          actions: 'Actions'
+      form:
+        actoins:
+          submit: "submit"
   main:
     shared:
       topbar: 
@@ -72,4 +84,7 @@ en:
         privacy_policies: "Privacy Policies"
         legal:            "Legal"
 
-
+  entity:
+    comapny:
+      status:
+        pending: 'Pending'
