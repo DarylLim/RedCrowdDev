@@ -23,6 +23,15 @@ RSpec.feature 'adding company' do
 
     within("form") do
       fill_in "company_name", :with => "First company" 
+      fill_in "company_registration_number", :with => "000000000000"
+      fill_in "company_location", :with => "Singapur"
+      fill_in "company_contact", :with => "+79000000000"
+      fill_in "company_website", :with => 'https://redcrowd.com'
+      fill_in "company_description", :with => 'Some description'
+
+
+#       (For Basic information)
+# Logo, Industry(Create dropdownlist)
     end
 
     click_button "Submit"

@@ -7,8 +7,12 @@ class Company < ActiveRecord::Base
   scope :approved, -> { where(status: APPROVED) }
   scope :rejected, -> { where(status: REJECTED) }
 
+  mount_uploader :logo, ::LogoUploader
+
   belongs_to :user
   has_many :rejection_reasons
+
+
 
   validates :name, presence: true
   

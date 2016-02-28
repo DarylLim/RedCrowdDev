@@ -29,6 +29,20 @@ en:
     formats:
       default: "%d %h %Y %I:%M%p"
 
+  activerecord:
+    models:
+      comapny: "Company"
+    attributes:
+      company:
+        name: 'Legal Business Name' 
+        registraion_number: 'Company Registration Number'
+        locaion: 'Location of Business'
+        contact: 'Contact'
+        industry: 'Industry'
+        website: 'Website'
+        description: 'Overview Description'
+
+
   admin:
     shared:
       topbar: 
