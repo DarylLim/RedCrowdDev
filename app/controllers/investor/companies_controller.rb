@@ -49,6 +49,6 @@ class Investor::CompaniesController < Investor::BaseController
 
   private
     def company_params
-      params.require(:company).permit(:name, :logo, :logo_cache, :registration_number, :location, :contact, :website, :description)
+      params.require(:company).permit(:name, :logo, :logo_cache, :registration_number, :location, :contact, :website, :description,  employees_attributes: [:id, :name, :biography, :position, :picture, :picture_cache, :_destroy])
     end
 end

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
       member do
         get :moderate
-        post :moderate, to: :submit
+        post :moderate, action: :submit
       end
     end
   end

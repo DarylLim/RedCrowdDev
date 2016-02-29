@@ -1,11 +1,11 @@
-= form_for [:investor, @company], html: {class: 'form-horizontal', :multipart => true} do |f|
+= nested_form_for [:investor, @company], html: {class: 'form-horizontal', :multipart => true} do |f|
   ul class="nav nav-tabs" role="tablist"
     li role="presentation" class="active"
       a href="#basic_info" aria-controls="basic_info" role="tab" data-toggle="tab" 
-        = "'Basic Information"
+        = t("investor.companies.form.tabs.basic_information")
     li role="presentation"
       a href="#team_info" aria-controls="team_info" role="tab" data-toggle="tab" 
-        = "'Team info"
+        = t("investor.companies.form.tabs.team_info")
 
   .tab-content
     div role="tabpanel" class="tab-pane active" id="basic_info"
@@ -19,7 +19,7 @@
       .form-group
         = f.label :logo, class: 'col-sm-2 col-md-2 control-label'
         .col-md-8.col-sm-10
-          = f.file_field :logo, rel: 'avatar'
+          = f.file_field :logo
           = f.hidden_field :logo_cache
           br
           - logo = f.object.logo.to_s
@@ -59,8 +59,36 @@
 
     div role="tabpanel" class="tab-pane" id="team_info"
       br
+      = f.fields_for :employees do |e_f|
+        .form-group
+          = e_f.label :name, class: 'col-sm-2 control-label'
+          .col-sm-4 
+            = e_f.text_field :name, class: 'form-control'
+        .form-group
+          = e_f.label :picture, class: 'col-sm-2 col-md-2 control-label'
+          .col-md-8.col-sm-10
+            = e_f.file_field :picture
+            = e_f.hidden_field :picture_cache
+            br
+            - picture = e_f.object.picture.to_s
+            - if picture.present?
+              img height="100" width="100" src="#{picture}"
 
-      'Team info
+        .form-group
+          = e_f.label :position, class: 'col-sm-2 control-label'
+          .col-sm-4 
+            = e_f.text_field :position, class: 'form-control'
+        .form-group
+          = e_f.label :biography, class: 'col-sm-2 control-label'
+          .col-sm-4 
+            = e_f.text_area :biography, class: 'form-control'
+        .form-group
+          .col-sm-6
+            = e_f.link_to_remove t("investor.companies.form.actions.remove_employee"), class: 'pull-right text-danger'
+            hr
+
+      = f.link_to_add t("investor.companies.form.actions.add_employee"), :employees
+
 
   .form-group
     .col-sm-offset-2.col-sm-4

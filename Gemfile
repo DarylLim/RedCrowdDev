@@ -44,6 +44,10 @@ gem 'virtus'
 gem "rmagick"
 gem 'carrierwave'
 
+#For working with nested_attributes in form
+gem "nested_form"
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
