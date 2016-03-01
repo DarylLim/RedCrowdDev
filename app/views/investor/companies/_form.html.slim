@@ -1,8 +1,17 @@
 = nested_form_for [:investor, @company], html: {class: 'form-horizontal', :multipart => true} do |f|
+  - if @company.errors.present?
+    .alert.alert-danger
+      ul
+        - @company.errors.full_messages.each do |msg|
+          li = msg
+
   ul class="nav nav-tabs" role="tablist"
     li role="presentation" class="active"
       a href="#basic_info" aria-controls="basic_info" role="tab" data-toggle="tab" 
         = t("investor.companies.form.tabs.basic_information")
+    li role="presentation"
+      a href="#funding_histories" aria-controls="funding_histories" role="tab" data-toggle="tab" 
+        = t("investor.companies.form.tabs.funding_histories")
     li role="presentation"
       a href="#team_info" aria-controls="team_info" role="tab" data-toggle="tab" 
         = t("investor.companies.form.tabs.team_info")
@@ -55,6 +64,31 @@
         = f.label :description, class: 'col-sm-2 control-label'
         .col-sm-4
           = f.text_area :description, class: 'form-control'
+
+    div role="tabpanel" class="tab-pane" id="funding_histories"
+      br
+      = f.fields_for :funding_histories do |f_h|
+        .form-group
+          = f_h.label :kind, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f_h.select :kind, options_for_select(FundingHistory::TYPES), {prompt: "Select type"}, class: 'form-control'
+
+        .form-group
+          = f_h.label :amount, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f_h.number_field :amount, class: 'form-control'
+
+        .form-group
+          = f_h.label :date, class: 'col-sm-2 control-label'
+          .col-sm-4
+            = f_h.text_field :date, class: 'form-control datepicker'
+        .form-group
+          .col-sm-6
+            = f_h.link_to_remove t("investor.companies.form.actions.remove_funding_hisotory"), class: 'pull-right text-danger'
+            hr
+
+
+      = f.link_to_add t("investor.companies.form.actions.funding_histories"), :funding_histories
 
 
     div role="tabpanel" class="tab-pane" id="team_info"

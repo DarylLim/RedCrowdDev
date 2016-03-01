@@ -3,7 +3,7 @@ class Company < ActiveRecord::Base
   APPROVED = 'approved'
   REJECTED = 'rejected'
 
-  scope :pending, -> { where(status: PENDING) }
+  scope :pending,  -> { where(status: PENDING) }
   scope :approved, -> { where(status: APPROVED) }
   scope :rejected, -> { where(status: REJECTED) }
 
@@ -12,12 +12,14 @@ class Company < ActiveRecord::Base
   belongs_to :user
   has_many :rejection_reasons
   has_many :employees
+  has_many :funding_histories
 
   validates :name, presence: true
   
   before_validation :set_default_status
 
   accepts_nested_attributes_for :employees, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :funding_histories, :reject_if => lambda { |a| a[:kind].blank? }, :allow_destroy => true
 
   def pending?
     self.status == PENDING
