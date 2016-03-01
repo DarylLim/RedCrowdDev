@@ -1,13 +1,75 @@
-h1 = @company.name
-table.table.table-bordered
-  thead
-    tr
-      th = t("investor.companies.show.table.#")
-      th = t("investor.companies.show.table.rejection_reason")
-      th = t("investor.companies.show.table.date")
-  tbody
-    - @company.rejection_reasons.each_with_index do |rejection_reason, index|
-      tr
-        td = index + 1
-        td = rejection_reason.content
-        td = rejection_reason.created_at
+h1 
+div
+  ul class="nav nav-tabs" role="tablist"
+    li role="presentation" class="active"
+      a href="#basic_info" aria-controls="basic_info" role="tab" data-toggle="tab" 
+        = t("investor.companies.show.tabs.basic_info")
+    li role="presentation"
+      a href="#team_info" aria-controls="team_info" role="tab" data-toggle="tab" 
+        = t("investor.companies.show.tabs.team_info")
+    li role="presentation"
+      a href="#moderation_history" aria-controls="moderation_history" role="tab" data-toggle="tab"
+        = t("investor.companies.show.tabs.moderation_history")
+  br
+  .tab-content
+    div role="tabpanel" class="tab-pane active" id="basic_info"
+      .row
+        .col-xs-3
+          dl.dl-horizontal
+            dt
+              = t('activerecord.attributes.company.name')
+            dd
+              = @company.name
+            dt
+              = t('activerecord.attributes.company.registration_number')
+            dd
+              = @company.registration_number
+            dt
+              = t('activerecord.attributes.company.location')
+            dd
+              = @company.location
+            dt
+              = t('activerecord.attributes.company.contact')
+            dd
+              = @company.contact
+            dt
+              = t('activerecord.attributes.company.industry')
+            dd
+              = @company.industry
+            dt
+              = t('activerecord.attributes.company.website')
+            dd
+              = @company.website
+            dt
+              = t('activerecord.attributes.company.description')
+            dd
+              = @company.description
+        .col-xs-2
+          a.thumbnail href='#' 
+            img src="#{@company.logo.to_s}"
+
+
+    div role="tabpanel" class="tab-pane" id="team_info"
+      .row
+        - @company.employees.each do |employee|
+          .col-sm-6.col-md-4
+            .thumbnail
+              img style="width: 350px; height: 197px;" src="#{employee.picture.to_s}"
+              .caption
+                h3 = employee.name
+                p = employee.position
+                p = employee.biography
+
+    div role="tabpanel" class="tab-pane" id="moderation_history"
+      table.table.table-bordered
+        thead
+          tr
+            th = t("investor.companies.show.table.#")
+            th = t("investor.companies.show.table.rejection_reason")
+            th = t("investor.companies.show.table.date")
+        tbody
+          - @company.rejection_reasons.each_with_index do |rejection_reason, index|
+            tr
+              td = index + 1
+              td = rejection_reason.content
+              td = rejection_reason.created_at

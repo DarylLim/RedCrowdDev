@@ -65,6 +65,9 @@ en:
           name: 'Name'
           status: 'Status'
           actions: 'Actions'
+      form:
+        actions:
+          submit: "Submit"
 
   investor: 
     shared:
@@ -89,7 +92,7 @@ en:
           actions: 'Actions'
       form:
         actions:
-          submit: "submit"
+          submit: "Submit"
           remove_employee:  'Remote this employee'
           add_employee:  'Add new employee'
         tabs:

@@ -19,3 +19,4 @@
 .vagrant
 cookbooks
 .DS_Store
+public/uploads

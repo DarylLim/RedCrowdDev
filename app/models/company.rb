@@ -41,6 +41,10 @@ class Company < ActiveRecord::Base
     self.save!  
   end
 
+  def industry
+    '-'  
+  end
+
   private
     def set_default_status
       self.status = PENDING if self.status.blank?
