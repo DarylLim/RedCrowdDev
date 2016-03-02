@@ -1,9 +1,12 @@
-h1 
 div
   ul class="nav nav-tabs" role="tablist"
     li role="presentation" class="active"
       a href="#basic_info" aria-controls="basic_info" role="tab" data-toggle="tab" 
         = t("investor.companies.show.tabs.basic_info")
+    li role="presentation"
+      a href="#funding_histories" aria-controls="funding_histories" role="tab" data-toggle="tab" 
+        = t("investor.companies.show.tabs.funding_histories")
+
     li role="presentation"
       a href="#team_info" aria-controls="team_info" role="tab" data-toggle="tab" 
         = t("investor.companies.show.tabs.team_info")
@@ -48,7 +51,14 @@ div
           a.thumbnail href='#' 
             img src="#{@company.logo.to_s}"
 
-
+    div role='tabpanel' class='tab-pane' id="funding_histories"
+      table.table
+        - @company.funding_histories.each do |funding_history|
+          tr
+            td = funding_history.kind
+            td = funding_history.amount
+            td = funding_history.date
+ 
     div role="tabpanel" class="tab-pane" id="team_info"
       .row
         - @company.employees.each do |employee|

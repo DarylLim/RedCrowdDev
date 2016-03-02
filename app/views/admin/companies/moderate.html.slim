@@ -1,5 +1,93 @@
 h2 Moderation 
 hr
+div
+  ul class="nav nav-tabs" role="tablist"
+    li role="presentation" class="active"
+      a href="#basic_info" aria-controls="basic_info" role="tab" data-toggle="tab" 
+        = t("admin.companies.show.tabs.basic_info")
+    li role="presentation"
+      a href="#funding_histories" aria-controls="funding_histories" role="tab" data-toggle="tab" 
+        = t("admin.companies.show.tabs.funding_histories")
+
+    li role="presentation"
+      a href="#team_info" aria-controls="team_info" role="tab" data-toggle="tab" 
+        = t("admin.companies.show.tabs.team_info")
+    li role="presentation"
+      a href="#moderation_history" aria-controls="moderation_history" role="tab" data-toggle="tab"
+        = t("admin.companies.show.tabs.moderation_history")
+  br
+  .tab-content
+    div role="tabpanel" class="tab-pane active" id="basic_info"
+      .row
+        .col-xs-3
+          dl.dl-horizontal
+            dt
+              = t('activerecord.attributes.company.name')
+            dd
+              = @company.name
+            dt
+              = t('activerecord.attributes.company.registration_number')
+            dd
+              = @company.registration_number
+            dt
+              = t('activerecord.attributes.company.location')
+            dd
+              = @company.location
+            dt
+              = t('activerecord.attributes.company.contact')
+            dd
+              = @company.contact
+            dt
+              = t('activerecord.attributes.company.industry')
+            dd
+              = @company.industry
+            dt
+              = t('activerecord.attributes.company.website')
+            dd
+              = @company.website
+            dt
+              = t('activerecord.attributes.company.description')
+            dd
+              = @company.description
+        .col-xs-2
+          a.thumbnail href='#' 
+            img src="#{@company.logo.to_s}"
+
+    div role='tabpanel' class='tab-pane' id="funding_histories"
+      table.table
+        - @company.funding_histories.each do |funding_history|
+          tr
+            td = funding_history.kind
+            td = funding_history.amount
+            td = funding_history.date
+ 
+    div role="tabpanel" class="tab-pane" id="team_info"
+      .row
+        - @company.employees.each do |employee|
+          .col-sm-6.col-md-4
+            .thumbnail
+              img style="width: 350px; height: 197px;" src="#{employee.picture.to_s}"
+              .caption
+                h3 = employee.name
+                p = employee.position
+                p = employee.biography
+
+    div role="tabpanel" class="tab-pane" id="moderation_history"
+      table.table.table-bordered
+        thead
+          tr
+            th = t("admin.companies.show.table.#")
+            th = t("admin.companies.show.table.rejection_reason")
+            th = t("admin.companies.show.table.date")
+        tbody
+          - @company.rejection_reasons.each_with_index do |rejection_reason, index|
+            tr
+              td = index + 1
+              td = rejection_reason.content
+              td = rejection_reason.created_at
+
+
+hr
 = form_for @company, url: { action: "moderate", controller: 'admin/companies'} , html: {class: 'form-horizontal', method: :post} do |f|
   - if @moderator.errors.present?
     .alert.alert-danger
@@ -21,6 +109,6 @@ hr
 
   .form-group
     .col-sm-offset-2.col-sm-4
-      = link_to t('back'), investor_companies_path, class: 'btn btn-default'
+      = link_to t('back'), pending_admin_companies_path, class: 'btn btn-default'
       |  
       = f.button t('admin.companies.form.actions.submit'), class: 'btn btn-primary'
