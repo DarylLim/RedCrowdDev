@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 
 
 //= require_tree .
@@ -21,8 +24,9 @@
 $(document).on('nested:fieldAdded', function(event){
   // this field was just inserted into your form
   var field = event.field; 
+
   // it's a jQuery object already! Now you can find date input
   var dateField = field.find('.datepicker');
   // and activate datepicker on it
-  // dateField.datepicker({ dateFormat: 'yy-mm-dd' })
+  dateField.datepicker({ format: 'yyyy-mm-dd' })
 })

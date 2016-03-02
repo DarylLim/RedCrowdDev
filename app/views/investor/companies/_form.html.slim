@@ -71,7 +71,7 @@
         .form-group
           = f_h.label :kind, class: 'col-sm-2 control-label'
           .col-sm-4
-            = f_h.select :kind, options_for_select(FundingHistory::TYPES), {prompt: "Select type"}, class: 'form-control'
+            = f_h.select :kind, options_for_select(FundingHistory::TYPES, f_h.object.kind), {prompt: "Select type"}, class: 'form-control'
 
         .form-group
           = f_h.label :amount, class: 'col-sm-2 control-label'

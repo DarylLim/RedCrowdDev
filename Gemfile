@@ -28,11 +28,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # tweeter-bootstrap
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-social-rails'
+gem 'bootstrap-datepicker-rails'
+
 
 # for html.slim
 gem 'slim'
 
-gem 'bootstrap-social-rails'
 gem "font-awesome-rails"
 
 #for authorization

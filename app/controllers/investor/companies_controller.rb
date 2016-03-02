@@ -31,7 +31,6 @@ class Investor::CompaniesController < Investor::BaseController
 
   def create
     @company = current_user.companies.build company_params
-    byebug
     respond_to do |format|
       if @company.save
         format.html {redirect_to investor_companies_path, notice: t("investor.notices.company.create")}
