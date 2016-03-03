@@ -23,6 +23,7 @@ RSpec.feature 'adding company' do
 
     within("form") do
       fill_in "company_name", :with => "First company" 
+      select I18n.t("industries.#{Company::INDUSTRIES.first}"), :from => "company_industry"
       fill_in "company_registration_number", :with => "000000000000"
       fill_in "company_location", :with => "Singapur"
       fill_in "company_contact", :with => "+79000000000"

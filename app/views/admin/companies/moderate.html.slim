@@ -19,7 +19,7 @@ div
   .tab-content
     div role="tabpanel" class="tab-pane active" id="basic_info"
       .row
-        .col-xs-3
+        .col-xs-4
           dl.dl-horizontal
             dt
               = t('activerecord.attributes.company.name')
@@ -40,7 +40,7 @@ div
             dt
               = t('activerecord.attributes.company.industry')
             dd
-              = @company.industry
+              = t("industries.#{@company.industry}")
             dt
               = t('activerecord.attributes.company.website')
             dd
@@ -57,7 +57,7 @@ div
       table.table
         - @company.funding_histories.each do |funding_history|
           tr
-            td = funding_history.kind
+            td = t("funding_types.#{funding_history.kind}")
             td = funding_history.amount
             td = funding_history.date
  

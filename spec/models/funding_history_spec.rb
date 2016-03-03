@@ -16,6 +16,10 @@ RSpec.describe FundingHistory, type: :model do
       subject.kind = nil
     end
 
+    it 'has incorrect kind' do
+      subject.kind = 'incorrect'
+    end
+
     it 'has blank amount' do
       subject.amount = nil
     end

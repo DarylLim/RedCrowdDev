@@ -28,6 +28,10 @@ RSpec.describe Company, type: :model do
     it 'has blank name' do
       company.name = nil
     end
+
+    it 'has incorrect industry' do
+      company.industry = 'incorrect'
+    end
   end
 
   it 'has method set_approved!' do

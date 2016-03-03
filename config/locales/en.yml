@@ -29,6 +29,32 @@ en:
     formats:
       default: "%d %h %Y %I:%M%p"
 
+  industries:
+    media:  "Communication & Media"
+    retail: "Consumer & Retail"
+    transportation: "Transportation"
+    manufacturing: "Manufacturing"
+    finance: "Finance"
+    healthcare: "Healthcare"
+    service: "Service Provider"
+    technology: "Technology"
+    automotive: "Automotive"
+    real_estate: "Real Estate"
+    education: "Education"
+
+  funding_types:
+    self_funded: "Founder’s (Self-funded)"
+    seed_round: "Seed Round"
+    pre_a_round: "Pre-A Round"
+    series_a: "Series A"
+    series_b: "Series B"
+    series_c: "Series C"
+    start_up_capital: "Start up Capital"
+    growth_capital: "Growth Capital"
+    credit_facility: "Working Capital Credit Facility"
+    bank_loan: "Bank Loan"
+    shareholder_load: "Shareholder Loan"
+
   activerecord:
     models:
       comapny: "Company"

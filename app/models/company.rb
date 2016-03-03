@@ -3,6 +3,8 @@ class Company < ActiveRecord::Base
   APPROVED = 'approved'
   REJECTED = 'rejected'
 
+  INDUSTRIES = %w(media retail transportation manufacturing finance healthcare service technology automotive real_estate education)
+
   scope :pending,  -> { where(status: PENDING) }
   scope :approved, -> { where(status: APPROVED) }
   scope :rejected, -> { where(status: REJECTED) }
@@ -15,6 +17,8 @@ class Company < ActiveRecord::Base
   has_many :funding_histories
 
   validates :name, presence: true
+  validates :industry, inclusion: INDUSTRIES
+
   
   before_validation :set_default_status
 
@@ -41,10 +45,6 @@ class Company < ActiveRecord::Base
   def set_rejected!
     self.status = REJECTED
     self.save!  
-  end
-
-  def industry
-    '-'  
   end
 
   private
