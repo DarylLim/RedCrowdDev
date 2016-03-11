@@ -1,0 +1,61 @@
+nav.navbar.navbar-inverse.navbar-fixed-top role="navigation" 
+  /! Brand and toggle get grouped for better mobile display
+  .navbar-header
+    button.navbar-toggle data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button" 
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    = link_to "RedCrowd", admin_root_path, class: 'navbar-brand'
+  /! Top Menu Items
+  ul.nav.navbar-right.top-nav
+    li.dropdown
+      a.dropdown-toggle data-toggle="dropdown" href="#" 
+        i.fa.fa-user
+        = "  #{current_user.email}"
+        b.caret
+      ul.dropdown-menu
+        li
+          = link_to root_url do
+
+            i.fa.fa-fw.fa-book
+            | Application
+        li
+          a href="#" 
+            i.fa.fa-fw.fa-gear
+            | Settings
+        li.divider
+        li
+          = link_to destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"} do
+            i.fa.fa-fw.fa-power-off
+            = t('admin.shared.topbar.sign_out')
+
+  .collapse.navbar-collapse.navbar-ex1-collapse
+    ul.nav.navbar-nav.side-nav
+      li class="#{topbar_class_list[:admin_root]}" 
+        = link_to admin_root_path do
+          
+          i.fa.fa-fw.fa-dashboard
+          |  
+          = t('admin.shared.topbar.dashboard')
+
+      li class="#{topbar_class_list[:admin_pending_companies]}" 
+        = link_to pending_admin_companies_path do
+          
+          i.fa.fa-fw.fa-clock-o
+          |  
+          = t('admin.shared.topbar.pending_companies')
+
+      li class="#{topbar_class_list[:admin_approved_companies]}" 
+        = link_to approved_admin_companies_path do
+          
+          i.fa.fa-fw.fa-check
+          |  
+          = t('admin.shared.topbar.approved_companies')
+
+      li class="#{topbar_class_list[:admin_rejected_companies]}" 
+        = link_to rejected_admin_companies_path do
+          
+          i.fa.fa-fw.fa-close
+          |  
+          = t('admin.shared.topbar.rejected_companies')

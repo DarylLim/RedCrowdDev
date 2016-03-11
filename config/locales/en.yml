@@ -73,6 +73,7 @@ en:
     shared:
       topbar: 
         logo: 'RedCrowd'
+        dashboard: 'Dashboard'
         pending_companies: 'Pending companies'
         approved_companies: 'Approved companies'
         sign_out: 'Sign out'
