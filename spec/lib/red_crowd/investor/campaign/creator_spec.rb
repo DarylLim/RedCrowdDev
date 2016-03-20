@@ -55,7 +55,7 @@ RSpec.describe RedCrowd::Investor::Campaign::Creator do
         end.to change(Campaign, :count).by(0)
       end
 
-        it 'returns false if amount_of_funding less than 500' do
+      it 'returns false if amount_of_funding less than 500' do
         @attributes = valid_attributes.merge(amount_of_funding: 499)
         expect(subject.save).to eq(false)
       end
