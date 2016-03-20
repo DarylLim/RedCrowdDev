@@ -15,11 +15,11 @@ class Company < ActiveRecord::Base
   has_many :rejection_reasons
   has_many :employees
   has_many :funding_histories
+  has_many :campaigns
 
   validates :name, presence: true
   validates :industry, inclusion: INDUSTRIES
 
-  
   before_validation :set_default_status
 
   accepts_nested_attributes_for :employees, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true

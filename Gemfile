@@ -31,6 +31,9 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'bootstrap-social-rails'
 gem 'bootstrap-datepicker-rails'
 
+# state_machine
+gem 'state_machine', :require => 'state_machine/core'
+
 
 # for html.slim
 gem 'slim'

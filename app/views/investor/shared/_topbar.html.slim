@@ -6,8 +6,10 @@
       ul.nav.navbar-nav#menu
         li class="#{topbar_class_list[:browse_companies]}" 
           = link_to t('investor.shared.topbar.companies'), investor_companies_path
+        li class="#{topbar_class_list[:browse_campaigns]}" 
       ul.nav.navbar-nav.pull-right
         li
           = link_to current_user.email, investor_root_path
         li
           = link_to t('investor.shared.topbar.sign_out'), destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"}
+

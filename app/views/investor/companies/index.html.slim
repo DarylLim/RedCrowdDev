@@ -19,3 +19,5 @@ table.table.table-bordered
           |  
           - if company.pending?
             = link_to t("investor.companies.index.actions.edit"), edit_investor_company_path(company), class: 'btn btn-info'
+          |  
+          = link_to t("investor.companies.index.actions.create_campaign"), new_investor_campaign_path(company_id: company.id), class: 'btn btn-success'
