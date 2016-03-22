@@ -4,27 +4,33 @@ br
 br
 .row
   .col-sm-12.col-md-6
-    form
+    = form_for @form, url: {action: 'create'}, html: {method: 'post'} do |f|
       div class="form-group"
-        label for="amount_of_money" 
+        label for="amount_of_money"
           |'How much money would you like to raise?
-        input type="text" class="form-control" id="amount_of_money"
-      
-      div class="form-group"
-        label for="title" 
-          |'Whats the title of your campaign
-        input type="text" class="form-control" id="title"
-      
-      div class="form-group"
-        label for="company" 
-          |'Select company for raising 
-        select class="form-control" id='company'
-          option Company 1 
-          option Company 2 
-          option Company 3 
-          option Company 4 
-          option Company 5 
+        = f.text_field :amount_of_funding, class: 'form-control'
 
-      button type="submit" class="btn btn-default" 
-        |'Create my campaign
+      div class="form-group"
+        label for="title"
+          |'Whats the title of your campaign
+        = f.text_field :title, class: 'form-control'
+
+      div class="form-group"
+        label for="company_id"
+          |'Select company for raising
+        = f.collection_select :company_id, current_user.companies, :id, :name, {}, class: 'form-control'
+
+      div class="form-group"
+        = f.label :kind_reward, class: 'radio-inline' do
+          = f.radio_button :kind, ::Campaign::REWARD
+          = "'REWARD"
+        = f.label :kind_reward, class: 'radio-inline' do
+          = f.radio_button :kind, ::Campaign::REWARD
+          = "'DEBT"
+        = f.label :kind_reward, class: 'radio-inline' do
+          = f.radio_button :kind, ::Campaign::REWARD
+          = "'EQUITY"
+
+
+      = f.submit "'Create my campaign", class: 'btn btn-default'
 

@@ -18,6 +18,8 @@ gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Use Select2 library for pretty selectboxes and tags
+gem "select2-rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -74,7 +76,7 @@ group :development, :test do
   gem 'capybara'
 
   #Generate humanize random data
-  gem 'forgery' 
+  gem 'forgery'
 
 end
 

@@ -16,16 +16,22 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
+//= require select2
+//= require select2_locale_en
 
 
 //= require_tree .
 
 $(document).on('nested:fieldAdded', function(event){
   // this field was just inserted into your form
-  var field = event.field; 
+  var field = event.field;
 
   // it's a jQuery object already! Now you can find date input
   var dateField = field.find('.datepicker');
   // and activate datepicker on it
   dateField.datepicker({ format: 'yyyy-mm-dd' })
+
+  $('.select2').select2({
+    width: '100%'
+  })
 })

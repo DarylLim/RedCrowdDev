@@ -3,4 +3,41 @@
 @import "font-awesome";
 @import "bootstrap-social";
 @import "bootstrap-datepicker3";
+@import "select2";
+@import "select2-bootstrap";
 
+.left-bar.well {
+  padding: 10px;
+  ul {
+    // border: 1px solid rgb(9,9,9);
+    margin-bottom: 0;
+    li {
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid #ccc;
+      // background-color: rgb(34,34,34);
+      color: rgb(51,51,51);
+      &:last-of-type{
+        border-bottom: none;
+      }
+      a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: rgb(119,119,119);
+        .arrow {
+          visibility: hidden;
+          line-height: 22px;
+        }
+        &:hover, &.active {
+          cursor: pointer;
+          color: black;
+          text-decoration: none;
+          .arrow {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}

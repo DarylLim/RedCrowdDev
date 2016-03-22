@@ -1,0 +1,139 @@
+h1
+  = @form.campaign.title
+  span.small  Edit
+
+br
+br
+.row
+  .col-sm-3.col-md-2
+    .left-bar.well
+      ul.list-unstyled role="tablist"
+        li
+          a.active aria-controls="basics" role="tab" data-toggle="tab" href="#basics"
+            strong 1
+            '  Basics
+            span.fa.fa-chevron-right.pull-right.arrow
+        li
+          a aria-controls="story" role="tab" data-toggle="tab" href="#story"
+            strong 2
+            '  Story
+            span.fa.fa-chevron-right.pull-right.arrow
+        li
+          a aria-controls="rewards" role="tab" data-toggle="tab" href="#rewards"
+            strong 3
+            '  Rewards
+            span.fa.fa-chevron-right.pull-right.arrow
+        li
+          a aria-controls="funding" role="tab" data-toggle="tab" href="#funding"
+            strong 4
+            '  Funding
+            span.fa.fa-chevron-right.pull-right.arrow
+        li
+          a aria-controls="extra" role="tab" data-toggle="tab" href="#extra"
+            strong 5
+            '  Extra
+            span.fa.fa-chevron-right.pull-right.arrow
+  .col-sm-9.col-md-6.well
+    = form_for @form, url: {action: 'update'}, html: {method: 'post', class: 'tab-content'} do |f|
+      .step.tab-pane#basics role="tabpanel"
+        div class="form-group"
+          label for="tagline"
+            |'Tagline
+          = f.text_area :tagline, class: 'form-control'
+
+        div class="form-group"
+          label for="card_image"
+            |'Campaign card image
+          div.row
+            .col-md-4
+              a.thumbnail href="#"
+                img alt="..." src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTUzOWU0MmZhNjAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTM5ZTQyZmE2MCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI2MC4xOTUzMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+"
+          = f.file_field :card_image
+
+        div class="form-group"
+          label for="category"
+            |'Category
+          = f.select :category, options_for_select([['123',1],['234',2],['345',3]]), {}, class: 'form-control select2'
+
+        div class="form-group"
+          label for="tags"
+            |'Tags
+          br
+          = f.select :tags, options_for_select([['123',1],['234',2],['345',3]]), {}, multiple: true, class: 'form-control tags-select'
+
+        div class="form-group"
+          label for="deadline"
+            |'Deadline
+          p
+            ''Funding ends
+            = f.text_field :deadline, class: 'form-control', style: "display: inline; width: 50px"
+            ''days from launch
+
+      .step.tab-pane#story role="tabpanel"
+        div class="form-group"
+          button.btn.btn-default
+            ''VIDEO
+          button.btn.btn-default
+            ''IMAGE
+        div class="form-group"
+          label for="video_url"
+            |'Video_url
+          = f.text_field :video_url, class: 'form-control'
+        div class="form-group"
+          label for="pitch_image"
+            |'Image
+          div.row
+            .col-md-4
+              a.thumbnail href="#"
+                img alt="..." src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTUzOWU0MmZhNjAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTM5ZTQyZmE2MCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI2MC4xOTUzMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+"
+          = f.file_field :pitch_image
+        div class="form-group"
+          label for="pitch"
+            |'Pitch
+          = f.text_area :pitch, class: 'form-control'
+
+
+      .step.tab-pane#rewards role="tabpanel"
+        div class="form-group"
+          button.btn.btn-default
+            ''Add reward
+          button.btn.btn-default
+            ''Add secret reward
+
+      .step.tab-pane#funding role="tabpanel"
+        div class="form-group"
+          label for="funding_type"
+            |'Funding type
+          = f.select :funding_type, options_for_select([['123',1],['234',2],['345',3]]), {}, class: 'form-control select2'
+
+      .step.tab-pane#extra role="tabpanel"
+        div class="form-group"
+          label for="custom_short_url"
+            |'CUSTOM URL
+          = f.text_field :custom_short_url, class: 'form-control'
+          label for="facebook"
+            |'Facebook
+          = f.text_field :facebook, class: 'form-control'
+          label for="twitter"
+            |'Twitter
+          = f.text_field :twitter, class: 'form-control'
+          label for="youtube"
+            |'Youtube
+          = f.text_field :youtube, class: 'form-control'
+          label for="website"
+            |'Website
+          = f.text_field :website, class: 'form-control'
+
+
+      = f.submit "'Update campaign", class: 'btn btn-default'
+
+coffee:
+  $('.tags-select').select2
+    tags: true,
+    width: '100%'
+
+  $('.left-bar a').click (e) ->
+    e.preventDefault()
+    $('.left-bar').find('a').removeClass('active')
+    $(e.target).addClass('active')
+  $('.left-bar a:first').click()
