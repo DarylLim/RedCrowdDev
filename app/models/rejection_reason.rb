@@ -1,5 +1,5 @@
 class RejectionReason < ActiveRecord::Base
-  belongs_to :company
+  belongs_to :objective, polymorphic: true
 
-  validates :company, :content, presence: true
+  validates :objective, :content, presence: true
 end

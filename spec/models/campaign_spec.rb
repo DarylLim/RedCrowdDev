@@ -1,17 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Campaign, type: :model do
-  let(:campaign) { FactoryGirl.build(:campaign) }
+  let(:subject) { FactoryGirl.build(:campaign) }
 
   it 'saves successfully if builds from FactoryGirl' do
-    expect(campaign.save!).to eq(true)
+    expect(subject.save!).to eq(true)
   end
 
-  context 'invalid' do
-    it 'has incorrect kind' do
-      campaign.kind = 'incorrect'
-      expect(campaign.valid?).to eq(false)
+  context '#valid?' do
+    it 'returns false if has incorrect kind' do
+      subject.kind = 'incorrect'
+      expect(subject.valid?).to eq(false)
     end
   end
 
+  has_status_extention
 end

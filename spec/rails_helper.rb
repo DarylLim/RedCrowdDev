@@ -16,6 +16,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :view
   config.extend ControllerMacros, :type => :controller
   config.extend ControllerMacros, :type => :view
+  config.extend ModelStatusMacros, :type => :model
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
