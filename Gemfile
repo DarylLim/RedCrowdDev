@@ -55,6 +55,8 @@ gem 'carrierwave'
 #For working with nested_attributes in form
 gem "nested_form"
 
+gem 'acts-as-taggable-on', '~> 3.4'
+
 
 
 # Use ActiveModel has_secure_password

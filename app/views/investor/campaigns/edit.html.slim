@@ -1,6 +1,8 @@
 h1
   = @form.campaign.title
-  span.small  Edit
+  span.small
+    '&nbsp;
+    = I18n.t('forms.campaign.reward.form_title')
 
 br
 br
@@ -11,121 +13,155 @@ br
         li
           a.active aria-controls="basics" role="tab" data-toggle="tab" href="#basics"
             strong 1
-            '  Basics
+            '&nbsp;
+            = I18n.t('forms.campaign.reward.tabs.basics')
             span.fa.fa-chevron-right.pull-right.arrow
         li
           a aria-controls="story" role="tab" data-toggle="tab" href="#story"
             strong 2
-            '  Story
+            '&nbsp;
+            = I18n.t('forms.campaign.reward.tabs.story')
             span.fa.fa-chevron-right.pull-right.arrow
         li
           a aria-controls="rewards" role="tab" data-toggle="tab" href="#rewards"
             strong 3
-            '  Rewards
+            '&nbsp;
+            = I18n.t('forms.campaign.reward.tabs.rewards')
             span.fa.fa-chevron-right.pull-right.arrow
         li
           a aria-controls="funding" role="tab" data-toggle="tab" href="#funding"
             strong 4
-            '  Funding
+            '&nbsp;
+            = I18n.t('forms.campaign.reward.tabs.funding')
             span.fa.fa-chevron-right.pull-right.arrow
         li
           a aria-controls="extra" role="tab" data-toggle="tab" href="#extra"
             strong 5
-            '  Extra
+            '&nbsp;
+            = I18n.t('forms.campaign.reward.tabs.extra')
             span.fa.fa-chevron-right.pull-right.arrow
   .col-sm-9.col-md-6.well
-    = form_for @form, url: {action: 'update'}, html: {method: 'post', class: 'tab-content'} do |f|
+    = form_for @form, url: {action: 'update'}, html: {method: 'patch', class: 'tab-content'} do |f|
+      - if @form.errors.present?
+        .alert.alert-danger
+          ul
+            - @form.errors.full_messages.each do |msg|
+              li = msg
       .step.tab-pane#basics role="tabpanel"
         div class="form-group"
-          label for="tagline"
-            |'Tagline
+          = f.label :tagline
+            = I18n.t('forms.campaign.reward.tagline')
           = f.text_area :tagline, class: 'form-control'
 
         div class="form-group"
-          label for="card_image"
-            |'Campaign card image
+          = f.label :card_image
+            = I18n.t('forms.campaign.reward.card_image')
           div.row
             .col-md-4
               a.thumbnail href="#"
-                img alt="..." src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTUzOWU0MmZhNjAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTM5ZTQyZmE2MCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI2MC4xOTUzMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+"
+                = display_campaign_img(f.object, :card_image)
+
           = f.file_field :card_image
 
         div class="form-group"
-          label for="category"
-            |'Category
+          = f.label :category
+            = I18n.t('forms.campaign.reward.category')
           = f.select :category, options_for_select([['123',1],['234',2],['345',3]]), {}, class: 'form-control select2'
 
         div class="form-group"
-          label for="tags"
-            |'Tags
+          = f.label :tag_list
+            = I18n.t('forms.campaign.reward.tag_list')
           br
-          = f.select :tags, options_for_select([['123',1],['234',2],['345',3]]), {}, multiple: true, class: 'form-control tags-select'
+          = f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all, f.object.campaign.tag_list), {}, multiple: true, class: 'form-control tags-select'
 
         div class="form-group"
-          label for="deadline"
-            |'Deadline
+          = f.label :deadline
+            = I18n.t('forms.campaign.reward.deadline')
           p
-            ''Funding ends
+            = I18n.t('forms.campaign.reward.deadline_hint_start')
             = f.text_field :deadline, class: 'form-control', style: "display: inline; width: 50px"
-            ''days from launch
+            = I18n.t('forms.campaign.reward.deadline_hint_end')
 
       .step.tab-pane#story role="tabpanel"
         div class="form-group"
-          button.btn.btn-default
-            ''VIDEO
-          button.btn.btn-default
-            ''IMAGE
+          a.btn.btn-default href='#'
+            = I18n.t('forms.campaign.reward.video')
+          a.btn.btn-default href='#'
+            = I18n.t('forms.campaign.reward.image')
         div class="form-group"
-          label for="video_url"
-            |'Video_url
+          = f.label :video_url
+            = I18n.t('forms.campaign.reward.video_url')
           = f.text_field :video_url, class: 'form-control'
         div class="form-group"
-          label for="pitch_image"
-            |'Image
+          = f.label :pitch_image
+            = I18n.t('forms.campaign.reward.pitch_image')
           div.row
             .col-md-4
               a.thumbnail href="#"
-                img alt="..." src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTUzOWU0MmZhNjAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTM5ZTQyZmE2MCI+PHJlY3Qgd2lkdGg9IjE3MSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI2MC4xOTUzMTI1IiB5PSI5NC41Ij4xNzF4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+"
+                = display_campaign_img(f.object, :pitch_image)
+
           = f.file_field :pitch_image
         div class="form-group"
-          label for="pitch"
-            |'Pitch
+          = f.label :pitch
+            = I18n.t('forms.campaign.reward.pitch')
           = f.text_area :pitch, class: 'form-control'
 
 
       .step.tab-pane#rewards role="tabpanel"
         div class="form-group"
-          button.btn.btn-default
-            ''Add reward
-          button.btn.btn-default
-            ''Add secret reward
+          a.btn.btn-default href='#'
+            = I18n.t('forms.campaign.reward.rewards.add')
+          a.btn.btn-default href='#'
+            = I18n.t('forms.campaign.reward.rewards.add_secret')
 
       .step.tab-pane#funding role="tabpanel"
-        div class="form-group"
-          label for="funding_type"
-            |'Funding type
-          = f.select :funding_type, options_for_select([['123',1],['234',2],['345',3]]), {}, class: 'form-control select2'
+        div.funding_type class="form-group"
+          = f.label :funding_type
+            = I18n.t('forms.campaign.reward.funding_type')
+          br/
+          = f.hidden_field :funding_type
+          div.btn.btn-default.radio-button.active data-value="direct_bank_transfer"
+            = I18n.t('forms.campaign.reward.funding_types.direct_bank_transfer')
+          div.btn.btn-default.radio-button data-value="paypal"
+            = I18n.t('forms.campaign.reward.funding_types.paypal')
+          div.btn.btn-default.radio-button data-value="stripe"
+            = I18n.t('forms.campaign.reward.funding_types.stripe')
 
       .step.tab-pane#extra role="tabpanel"
         div class="form-group"
-          label for="custom_short_url"
-            |'CUSTOM URL
+          = f.label :custom_short_url
+            = I18n.t('forms.campaign.reward.custom_short_url')
           = f.text_field :custom_short_url, class: 'form-control'
-          label for="facebook"
-            |'Facebook
+        div class="form-group"
+          = f.label :facebook
+            .fa.fa-facebook
+            '&nbsp;
+            = I18n.t('forms.campaign.reward.facebook')
           = f.text_field :facebook, class: 'form-control'
-          label for="twitter"
-            |'Twitter
+        div class="form-group"
+          = f.label :facebook_shared_image
+            = I18n.t('forms.campaign.reward.facebook_shared_image')
+          div.row
+            .col-md-4
+              a.thumbnail href="#"
+                = display_campaign_img(f.object, :facebook_shared_image)
+          = f.file_field :facebook_shared_image
+          = f.label :twitter
+            .fa.fa-twitter
+            '&nbsp;
+            = I18n.t('forms.campaign.reward.twitter')
           = f.text_field :twitter, class: 'form-control'
-          label for="youtube"
-            |'Youtube
+          = f.label :youtube
+            .fa.fa-youtube
+            '&nbsp;
+            = I18n.t('forms.campaign.reward.youtube')
           = f.text_field :youtube, class: 'form-control'
-          label for="website"
-            |'Website
+          = f.label :website
+            = I18n.t('forms.campaign.reward.website')
           = f.text_field :website, class: 'form-control'
 
 
-      = f.submit "'Update campaign", class: 'btn btn-default'
+      = f.submit I18n.t('forms.campaign.reward.submit'), class: 'btn btn-default'
 
 coffee:
   $('.tags-select').select2
@@ -137,3 +173,10 @@ coffee:
     $('.left-bar').find('a').removeClass('active')
     $(e.target).addClass('active')
   $('.left-bar a:first').click()
+
+  $('.radio-button').click (e) ->
+    $(e.target).parent().find('.radio-button').removeClass('active')
+    $(e.target).addClass('active')
+    $(e.target).parent().find('input[type=hidden]').val($(e.target).data('value'))
+  div = $('#funding .funding_type')
+  div.find("[data-value=#{div.find('input[type=hidden]').val()}]").click() if div.find('input[type=hidden]').val()

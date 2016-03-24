@@ -9,8 +9,10 @@ class RedCrowd::Investor::Campaign::Creator
   attribute :title, String
   attribute :company_id, Integer
 
-  validates :company_id, :kind, :title, presence: true
-  validates :amount_of_funding, numericality: { greater_than_or_equal_to: 500 }
+  validates :company_id, presence: { message: I18n.t('forms.campaign.creator.errors.blank_company_id') }
+  validates :kind, presence: { message: I18n.t('forms.campaign.creator.errors.blank_kind') }
+  validates :title, presence: { message: I18n.t('forms.campaign.creator.errors.blank_title') }
+  validates :amount_of_funding, numericality: { greater_than_or_equal_to: 500, message: I18n.t('forms.campaign.creator.errors.wrong_amount_of_funding') }
 
   def persisted?
     true

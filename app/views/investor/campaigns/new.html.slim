@@ -1,36 +1,42 @@
-h1 'Start a campaign
+h1 = I18n.t('forms.campaign.creator.form_title')
 
 br
 br
 .row
-  .col-sm-12.col-md-6
+  .col-sm-12.col-md-6.well
     = form_for @form, url: {action: 'create'}, html: {method: 'post'} do |f|
+      - if @form.errors.present?
+        .alert.alert-danger
+          ul
+            - @form.errors.full_messages.each do |msg|
+              li = msg
       div class="form-group"
-        label for="amount_of_money"
-          |'How much money would you like to raise?
+        = f.label :amount_of_funding
+          = I18n.t('forms.campaign.creator.amount_of_funding')
         = f.text_field :amount_of_funding, class: 'form-control'
+        small = I18n.t('forms.campaign.creator.amount_of_funding_hint')
 
       div class="form-group"
-        label for="title"
-          |'Whats the title of your campaign
+        = f.label :title
+          = I18n.t('forms.campaign.creator.title')
         = f.text_field :title, class: 'form-control'
 
       div class="form-group"
-        label for="company_id"
-          |'Select company for raising
-        = f.collection_select :company_id, current_user.companies, :id, :name, {}, class: 'form-control'
+        = f.label :company_id
+          = I18n.t('forms.campaign.creator.company_id')
+        = f.collection_select :company_id, current_user.companies, :id, :name, {selected: params[:company_id]}, class: 'form-control'
 
       div class="form-group"
-        = f.label :kind_reward, class: 'radio-inline' do
-          = f.radio_button :kind, ::Campaign::REWARD
-          = "'REWARD"
-        = f.label :kind_reward, class: 'radio-inline' do
-          = f.radio_button :kind, ::Campaign::REWARD
-          = "'DEBT"
-        = f.label :kind_reward, class: 'radio-inline' do
-          = f.radio_button :kind, ::Campaign::REWARD
-          = "'EQUITY"
+        = f.label :kind
+          = I18n.t('forms.campaign.creator.kind')
+        br/
+        = f.hidden_field :kind, value: ::Campaign::REWARD
+        div.btn.btn-default.radio-button.active data-value="#{::Campaign::REWARD}"
+          = I18n.t('forms.campaign.creator.kinds.reward')
+        div.btn.btn-default.radio-button data-value="#{::Campaign::DEBT}"
+          = I18n.t('forms.campaign.creator.kinds.debt')
+        div.btn.btn-default.radio-button data-value="#{::Campaign::EQUITY}"
+          = I18n.t('forms.campaign.creator.kinds.equity')
 
 
-      = f.submit "'Create my campaign", class: 'btn btn-default'
-
+      = f.submit I18n.t('forms.campaign.creator.submit'), class: 'btn btn-default'

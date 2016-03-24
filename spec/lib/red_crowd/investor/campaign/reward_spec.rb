@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe RedCrowd::Investor::Campaign::Reward do
-  let(:subject) { described_class.new @attributes }
+  let(:campaign) { FactoryGirl.create(:campaign)}
+  let(:subject) { described_class.new @attributes.merge(campaign: campaign) }
   let(:valid_attributes) do
     {
       tagline: Forgery(:lorem_ipsum).words(10),
@@ -20,7 +21,7 @@ RSpec.describe RedCrowd::Investor::Campaign::Reward do
   context '#save' do
     context 'valid_attributes' do
       it 'returns true' do
-        expect(subject.save).to eq(true)
+        expect(subject.save.class).to eq(Campaign)
       end
     end
 
@@ -86,8 +87,8 @@ RSpec.describe RedCrowd::Investor::Campaign::Reward do
           @attributes[:website] = nil
         end
 
-        pending 'video gallery' 
-        pending 'image gallery' 
+        pending 'video gallery'
+        pending 'image gallery'
       end
 
     end

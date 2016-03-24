@@ -5,31 +5,40 @@ class RedCrowd::Investor::Campaign::Reward
   include ActiveModel::Conversion
 
   attribute :campaign, ::Campaign
-  attribute :title, String
   # Basics
   attribute :tagline, String
-  attribute :card_image, String
+  attribute :card_image, LogoUploader
   attribute :category, String
-  attribute :tags, String
-  attribute :deadline, DateTime
+  attribute :tag_list, Array
+  attribute :deadline, Integer
   # Story
-  attribute :pitch
-  attribute :pitch_image
-  attribute :video_url
+  attribute :pitch, String
+  attribute :pitch_image, PitchImageUploader
+  attribute :video_url, String
   # Rewards
   # Funding
-  attribute :funding_type
+  attribute :funding_type, String
   # Extra
-  attribute :custom_short_url
-  attribute :facebook
-  attribute :twitter
-  attribute :youtube
-  attribute :website
+  attribute :custom_short_url, String
+  attribute :facebook, String
+  attribute :facebook_shared_image, FacebookSharedImageUploader
+  attribute :twitter, String
+  attribute :youtube, String
+  attribute :website, String
   #...
+
+
+  #TODO change it
+  delegate :card_image, :pitch_image, :facebook_shared_image, to: :campaign
+
+  def persisted?
+    true
+  end
 
   def save
     return false unless valid?
-    #...
-    true
+    campaign.update_attributes(attributes.except(:campaign, :video_url))
+    campaign
   end
+
 end
