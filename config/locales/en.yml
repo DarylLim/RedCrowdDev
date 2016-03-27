@@ -55,60 +55,7 @@ en:
     bank_loan: "Bank Loan"
     shareholder_load: "Shareholder Loan"
 
-  forms:
-    campaign:
-      creator:
-        form_title: 'Start a campaign'
-        title: "Whats the title of your campaign"
-        amount_of_funding: "How much money would you like to raise?"
-        amount_of_funding_hint: "Must be greater than $500"
-        company_id: "Select company for raising"
-        kind: "Kind"
-        kinds:
-          reward: 'REWARD'
-          debt: 'DEBT'
-          equity: 'EQUITY'
-        submit: 'Create my campaign'
-        errors:
-          blank_company_id: "Company can't be blank"
-          blank_kind: "Kind can't be blank"
-          blank_title: "Title can't be blank"
-          wrong_amount_of_funding: "Must be greater than $500"
-      reward:
-        tabs:
-          basics: 'Basics'
-          story: 'Story'
-          rewards: 'Rewards'
-          funding: 'Funding'
-          extra: 'Extra'
-        form_title: 'Edit'
-        tagline: "Tagline"
-        card_image: "Campaign card Image"
-        category: "Category"
-        tag_list: "Tags"
-        deadline: "Deadline"
-        deadline_hint_start: "Funding ends "
-        deadline_hint_end: " days from launch"
-        video: "video"
-        image: "image"
-        pitch: "Pitch"
-        pitch_image: "Pitch image"
-        video_url: "Video URL"
-        rewards:
-          add: "Add reward"
-          add_secret: "Add secret reward"
-        funding_type: "Funding Type"
-        funding_types:
-          direct_bank_transfer: "Direct Bank Transfer"
-          paypal: "PayPal"
-          stripe: "Stripe"
-        custom_short_url: "Custom short URL"
-        facebook: "Facebook"
-        facebook_shared_image: "Facebook shared image"
-        twitter: "Twitter"
-        youtube: "Youtube"
-        website: "Website"
-        submit: 'Update campaign'
+  investor:
 
   activerecord:
     models:
@@ -151,6 +98,18 @@ en:
       form:
         actions:
           submit: "Submit"
+    rewards:
+      index:
+        actions:
+          moderate: 'Moderate'
+        table:
+          '#': '#'
+          name: 'Name'
+          status: 'Status'
+          actions: 'Actions'
+      form:
+        actions:
+          submit: "Submit"
 
   investor:
     shared:
@@ -181,6 +140,94 @@ en:
         tabs:
           basic_information: 'Basic Information'
           team_info: 'Team Info'
+    campaign:
+      creator:
+        form:
+          form_title: 'Start a campaign'
+          title: "Whats the title of your campaign"
+          amount_of_funding: "How much money would you like to raise?"
+          amount_of_funding_hint: "Must be greater than $500"
+          company_id: "Select company for raising"
+          kind: "Kind"
+          kinds:
+            reward: 'REWARD'
+            debt: 'DEBT'
+            equity: 'EQUITY'
+          submit: 'Create my campaign'
+          errors:
+            blank_company_id: "Company can't be blank"
+            blank_kind: "Kind can't be blank"
+            blank_title: "Title can't be blank"
+            wrong_amount_of_funding: "Must be greater than $500"
+      reward:
+        form:
+          tabs:
+            basics: 'Basics'
+            story: 'Story'
+            rewards: 'Rewards'
+            funding: 'Funding'
+            extra: 'Extra'
+          form_title: 'Edit'
+          tagline: "Tagline"
+          card_image: "Campaign card Image"
+          category: "Category"
+          tag_list: "Tags"
+          deadline: "Deadline"
+          deadline_hint_start: "Funding ends "
+          deadline_hint_end: " days from launch"
+          video: "video"
+          image: "image"
+          pitch: "Pitch"
+          pitch_image: "Pitch image"
+          video_url: "Video URL"
+          rewards:
+            add: "Add reward"
+            add_secret: "Add secret reward"
+          funding_type: "Funding Type"
+          funding_types:
+            direct_bank_transfer: "Direct Bank Transfer"
+            paypal: "PayPal"
+            stripe: "Stripe"
+          custom_short_url: "Custom short URL"
+          facebook: "Facebook"
+          facebook_shared_image: "Facebook shared image"
+          twitter: "Twitter"
+          youtube: "Youtube"
+          website: "Website"
+          submit: 'Update campaign'
+        show:
+          tabs:
+            basics: 'Basics'
+            story: 'Story'
+            rewards: 'Rewards'
+            funding: 'Funding'
+            extra: 'Extra'
+          tagline: "Tagline"
+          card_image: "Campaign card Image"
+          category: "Category"
+          tag_list: "Tags"
+          deadline: "Deadline"
+          deadline_hint_start: "Funding ends "
+          deadline_hint_end: " days from launch"
+          video: "video"
+          image: "image"
+          pitch: "Pitch"
+          pitch_image: "Pitch image"
+          video_url: "Video URL"
+          rewards:
+            add: "Add reward"
+            add_secret: "Add secret reward"
+          funding_type: "Funding Type"
+          funding_types:
+            direct_bank_transfer: "Direct Bank Transfer"
+            paypal: "PayPal"
+            stripe: "Stripe"
+          custom_short_url: "Custom short URL"
+          facebook: "Facebook"
+          facebook_shared_image: "Facebook shared image"
+          twitter: "Twitter"
+          youtube: "Youtube"
+          website: "Website"
 
   main:
     shared:
@@ -216,6 +263,11 @@ en:
 
   entity:
     comapny:
+      status:
+        pending: 'Pending'
+      approved: "Approved?"
+      rejection_reason: 'Rejection reason'
+    reward:
       status:
         pending: 'Pending'
       approved: "Approved?"

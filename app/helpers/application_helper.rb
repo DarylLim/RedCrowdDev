@@ -7,6 +7,10 @@ module ApplicationHelper
         @topbar_class_list[:admin_root] = 'active'
       when "admin/companies"
         @topbar_class_list[:"admin_#{params[:action]}_companies"] = 'active'
+        @topbar_class_list[:"admin_companies_root"] = 'active'
+      when "admin/rewards"
+        @topbar_class_list[:"admin_#{params[:action]}_rewards"] = 'active'
+        @topbar_class_list[:"admin_rewards_root"] = 'active'
       when "users/sessions"
         @topbar_class_list[:login] = 'active'
       when "users/registrations"

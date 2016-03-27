@@ -1,0 +1,16 @@
+table.table.table-bordered
+  thead
+    tr
+      th = t("admin.rewards.index.table.#")
+      th = t("admin.rewards.index.table.name")
+      th = t("admin.rewards.index.table.status")
+      th = t("admin.rewards.index.table.actions")
+  tbody
+    - @campaigns.each_with_index do |campaign, index|
+      tr
+        td = index + 1
+        td = campaign.title
+        td = t("entity.reward.status.#{campaign.status}")
+        td
+          - if campaign.pending?
+            = link_to t("admin.rewards.index.actions.moderate"), moderate_admin_reward_path(campaign), class: 'btn btn-info'

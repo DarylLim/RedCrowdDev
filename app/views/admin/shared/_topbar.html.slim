@@ -1,7 +1,7 @@
-nav.navbar.navbar-inverse.navbar-fixed-top role="navigation" 
+nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
   /! Brand and toggle get grouped for better mobile display
   .navbar-header
-    button.navbar-toggle data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button" 
+    button.navbar-toggle data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button"
       span.sr-only Toggle navigation
       span.icon-bar
       span.icon-bar
@@ -10,7 +10,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
   /! Top Menu Items
   ul.nav.navbar-right.top-nav
     li.dropdown
-      a.dropdown-toggle data-toggle="dropdown" href="#" 
+      a.dropdown-toggle data-toggle="dropdown" href="#"
         i.fa.fa-user
         = "  #{current_user.email}"
         b.caret
@@ -21,7 +21,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
             i.fa.fa-fw.fa-book
             | Application
         li
-          a href="#" 
+          a href="#"
             i.fa.fa-fw.fa-gear
             | Settings
         li.divider
@@ -31,31 +31,66 @@ nav.navbar.navbar-inverse.navbar-fixed-top role="navigation"
             = t('admin.shared.topbar.sign_out')
 
   .collapse.navbar-collapse.navbar-ex1-collapse
+
     ul.nav.navbar-nav.side-nav
-      li class="#{topbar_class_list[:admin_root]}" 
+      li class="#{topbar_class_list[:admin_root]}"
         = link_to admin_root_path do
-          
+
           i.fa.fa-fw.fa-dashboard
-          |  
+          |
           = t('admin.shared.topbar.dashboard')
 
-      li class="#{topbar_class_list[:admin_pending_companies]}" 
-        = link_to pending_admin_companies_path do
-          
-          i.fa.fa-fw.fa-clock-o
-          |  
-          = t('admin.shared.topbar.pending_companies')
+      li class="#{topbar_class_list[:admin_companies_root]}"
+        a aria-expanded="true" data-target="#companies" data-toggle="collapse" href="javascript:;"
+          i.fa.fa-fw.fa-users
+          = t('admin.shared.topbar.companies')
+          i.fa.fa-fw.fa-caret-down
 
-      li class="#{topbar_class_list[:admin_approved_companies]}" 
-        = link_to approved_admin_companies_path do
-          
-          i.fa.fa-fw.fa-check
-          |  
-          = t('admin.shared.topbar.approved_companies')
+        ul.collapse#companies class="#{'in' if topbar_class_list[:admin_companies_root] == 'active'}"
+          li class="#{topbar_class_list[:admin_pending_companies]}"
+            = link_to pending_admin_companies_path do
 
-      li class="#{topbar_class_list[:admin_rejected_companies]}" 
-        = link_to rejected_admin_companies_path do
-          
-          i.fa.fa-fw.fa-close
-          |  
-          = t('admin.shared.topbar.rejected_companies')
+              i.fa.fa-fw.fa-clock-o
+              |
+              = t('admin.shared.topbar.pending_companies')
+
+          li class="#{topbar_class_list[:admin_approved_companies]}"
+            = link_to approved_admin_companies_path do
+
+              i.fa.fa-fw.fa-check
+              |
+              = t('admin.shared.topbar.approved_companies')
+
+          li class="#{topbar_class_list[:admin_rejected_companies]}"
+            = link_to rejected_admin_companies_path do
+
+              i.fa.fa-fw.fa-close
+              |
+              = t('admin.shared.topbar.rejected_companies')
+      li class="#{topbar_class_list[:admin_rewards_root]}"
+        a aria-expanded="true" data-target="#rewards" data-toggle="collapse" href="javascript:;"
+          i.fa.fa-fw.fa-users
+          = t('admin.shared.topbar.rewards')
+          i.fa.fa-fw.fa-caret-down
+
+        ul.collapse#rewards class="#{'in' if topbar_class_list[:admin_rewards_root] == 'active'}"
+          li class="#{topbar_class_list[:admin_pending_rewards]}"
+            = link_to pending_admin_rewards_path do
+
+              i.fa.fa-fw.fa-clock-o
+              |
+              = t('admin.shared.topbar.pending_rewards')
+
+          li class="#{topbar_class_list[:admin_approved_rewards]}"
+            = link_to approved_admin_rewards_path do
+
+              i.fa.fa-fw.fa-check
+              |
+              = t('admin.shared.topbar.approved_rewards')
+
+          li class="#{topbar_class_list[:admin_rejected_rewards]}"
+            = link_to rejected_admin_rewards_path do
+
+              i.fa.fa-fw.fa-close
+              |
+              = t('admin.shared.topbar.rejected_rewards')

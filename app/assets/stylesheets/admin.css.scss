@@ -3,3 +3,8 @@
 
 @import "morris";
 @import "sb-admin";
+
+.navbar-inverse .navbar-nav .active>a, .navbar-inverse .navbar-nav .active>a:focus, .navbar-inverse .navbar-nav .active>a:hover {
+  color: #fff;
+  background-color: #080808;
+}

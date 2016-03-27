@@ -2,7 +2,7 @@ h1
   = @form.campaign.title
   span.small
     '&nbsp;
-    = I18n.t('forms.campaign.reward.form_title')
+    = I18n.t('investor.campaign.reward.form.form_title')
 
 br
 br
@@ -14,31 +14,31 @@ br
           a.active aria-controls="basics" role="tab" data-toggle="tab" href="#basics"
             strong 1
             '&nbsp;
-            = I18n.t('forms.campaign.reward.tabs.basics')
+            = I18n.t('investor.campaign.reward.form.tabs.basics')
             span.fa.fa-chevron-right.pull-right.arrow
         li
           a aria-controls="story" role="tab" data-toggle="tab" href="#story"
             strong 2
             '&nbsp;
-            = I18n.t('forms.campaign.reward.tabs.story')
+            = I18n.t('investor.campaign.reward.form.tabs.story')
             span.fa.fa-chevron-right.pull-right.arrow
         li
           a aria-controls="rewards" role="tab" data-toggle="tab" href="#rewards"
             strong 3
             '&nbsp;
-            = I18n.t('forms.campaign.reward.tabs.rewards')
+            = I18n.t('investor.campaign.reward.form.tabs.rewards')
             span.fa.fa-chevron-right.pull-right.arrow
         li
           a aria-controls="funding" role="tab" data-toggle="tab" href="#funding"
             strong 4
             '&nbsp;
-            = I18n.t('forms.campaign.reward.tabs.funding')
+            = I18n.t('investor.campaign.reward.form.tabs.funding')
             span.fa.fa-chevron-right.pull-right.arrow
         li
           a aria-controls="extra" role="tab" data-toggle="tab" href="#extra"
             strong 5
             '&nbsp;
-            = I18n.t('forms.campaign.reward.tabs.extra')
+            = I18n.t('investor.campaign.reward.form.tabs.extra')
             span.fa.fa-chevron-right.pull-right.arrow
   .col-sm-9.col-md-6.well
     = form_for @form, url: {action: 'update'}, html: {method: 'patch', class: 'tab-content'} do |f|
@@ -50,12 +50,12 @@ br
       .step.tab-pane#basics role="tabpanel"
         div class="form-group"
           = f.label :tagline
-            = I18n.t('forms.campaign.reward.tagline')
+            = I18n.t('investor.campaign.reward.form.tagline')
           = f.text_area :tagline, class: 'form-control'
 
         div class="form-group"
           = f.label :card_image
-            = I18n.t('forms.campaign.reward.card_image')
+            = I18n.t('investor.campaign.reward.form.card_image')
           div.row
             .col-md-4
               a.thumbnail href="#"
@@ -65,36 +65,36 @@ br
 
         div class="form-group"
           = f.label :category
-            = I18n.t('forms.campaign.reward.category')
+            = I18n.t('investor.campaign.reward.form.category')
           = f.select :category, options_for_select([['123',1],['234',2],['345',3]]), {}, class: 'form-control select2'
 
         div class="form-group"
           = f.label :tag_list
-            = I18n.t('forms.campaign.reward.tag_list')
+            = I18n.t('investor.campaign.reward.form.tag_list')
           br
           = f.select :tag_list, options_for_select(ActsAsTaggableOn::Tag.all, f.object.campaign.tag_list), {}, multiple: true, class: 'form-control tags-select'
 
         div class="form-group"
           = f.label :deadline
-            = I18n.t('forms.campaign.reward.deadline')
+            = I18n.t('investor.campaign.reward.form.deadline')
           p
-            = I18n.t('forms.campaign.reward.deadline_hint_start')
+            = I18n.t('investor.campaign.reward.form.deadline_hint_start')
             = f.text_field :deadline, class: 'form-control', style: "display: inline; width: 50px"
-            = I18n.t('forms.campaign.reward.deadline_hint_end')
+            = I18n.t('investor.campaign.reward.form.deadline_hint_end')
 
       .step.tab-pane#story role="tabpanel"
         div class="form-group"
           a.btn.btn-default href='#'
-            = I18n.t('forms.campaign.reward.video')
+            = I18n.t('investor.campaign.reward.form.video')
           a.btn.btn-default href='#'
-            = I18n.t('forms.campaign.reward.image')
+            = I18n.t('investor.campaign.reward.form.image')
         div class="form-group"
           = f.label :video_url
-            = I18n.t('forms.campaign.reward.video_url')
+            = I18n.t('investor.campaign.reward.form.video_url')
           = f.text_field :video_url, class: 'form-control'
         div class="form-group"
           = f.label :pitch_image
-            = I18n.t('forms.campaign.reward.pitch_image')
+            = I18n.t('investor.campaign.reward.form.pitch_image')
           div.row
             .col-md-4
               a.thumbnail href="#"
@@ -103,65 +103,68 @@ br
           = f.file_field :pitch_image
         div class="form-group"
           = f.label :pitch
-            = I18n.t('forms.campaign.reward.pitch')
+            = I18n.t('investor.campaign.reward.form.pitch')
           = f.text_area :pitch, class: 'form-control'
 
 
       .step.tab-pane#rewards role="tabpanel"
         div class="form-group"
           a.btn.btn-default href='#'
-            = I18n.t('forms.campaign.reward.rewards.add')
+            = I18n.t('investor.campaign.reward.form.rewards.add')
           a.btn.btn-default href='#'
-            = I18n.t('forms.campaign.reward.rewards.add_secret')
+            = I18n.t('investor.campaign.reward.form.rewards.add_secret')
 
       .step.tab-pane#funding role="tabpanel"
         div.funding_type class="form-group"
           = f.label :funding_type
-            = I18n.t('forms.campaign.reward.funding_type')
+            = I18n.t('investor.campaign.reward.form.funding_type')
           br/
           = f.hidden_field :funding_type
           div.btn.btn-default.radio-button.active data-value="direct_bank_transfer"
-            = I18n.t('forms.campaign.reward.funding_types.direct_bank_transfer')
+            = I18n.t('investor.campaign.reward.form.funding_types.direct_bank_transfer')
           div.btn.btn-default.radio-button data-value="paypal"
-            = I18n.t('forms.campaign.reward.funding_types.paypal')
+            = I18n.t('investor.campaign.reward.form.funding_types.paypal')
           div.btn.btn-default.radio-button data-value="stripe"
-            = I18n.t('forms.campaign.reward.funding_types.stripe')
+            = I18n.t('investor.campaign.reward.form.funding_types.stripe')
 
       .step.tab-pane#extra role="tabpanel"
         div class="form-group"
           = f.label :custom_short_url
-            = I18n.t('forms.campaign.reward.custom_short_url')
+            = I18n.t('investor.campaign.reward.form.custom_short_url')
           = f.text_field :custom_short_url, class: 'form-control'
         div class="form-group"
           = f.label :facebook
             .fa.fa-facebook
             '&nbsp;
-            = I18n.t('forms.campaign.reward.facebook')
+            = I18n.t('investor.campaign.reward.form.facebook')
           = f.text_field :facebook, class: 'form-control'
         div class="form-group"
           = f.label :facebook_shared_image
-            = I18n.t('forms.campaign.reward.facebook_shared_image')
+            = I18n.t('investor.campaign.reward.form.facebook_shared_image')
           div.row
             .col-md-4
               a.thumbnail href="#"
                 = display_campaign_img(f.object, :facebook_shared_image)
           = f.file_field :facebook_shared_image
+        div class="form-group"
           = f.label :twitter
             .fa.fa-twitter
             '&nbsp;
-            = I18n.t('forms.campaign.reward.twitter')
+            = I18n.t('investor.campaign.reward.form.twitter')
           = f.text_field :twitter, class: 'form-control'
+        div class="form-group"
           = f.label :youtube
             .fa.fa-youtube
             '&nbsp;
-            = I18n.t('forms.campaign.reward.youtube')
+            = I18n.t('investor.campaign.reward.form.youtube')
           = f.text_field :youtube, class: 'form-control'
+        div class="form-group"
           = f.label :website
-            = I18n.t('forms.campaign.reward.website')
+            = I18n.t('investor.campaign.reward.form.website')
           = f.text_field :website, class: 'form-control'
 
 
-      = f.submit I18n.t('forms.campaign.reward.submit'), class: 'btn btn-default'
+      = f.submit I18n.t('investor.campaign.reward.form.submit'), class: 'btn btn-default'
 
 coffee:
   $('.tags-select').select2

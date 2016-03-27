@@ -1,0 +1,147 @@
+h1
+  = @campaign.title
+
+br
+br
+.row
+  .col-sm-3.col-md-2
+    .left-bar.well
+      ul.list-unstyled role="tablist"
+        li
+          a.active aria-controls="basics" role="tab" data-toggle="tab" href="#basics"
+            strong 1
+            '&nbsp;
+            = I18n.t('investor.campaign.reward.show.tabs.basics')
+            span.fa.fa-chevron-right.pull-right.arrow
+        li
+          a aria-controls="story" role="tab" data-toggle="tab" href="#story"
+            strong 2
+            '&nbsp;
+            = I18n.t('investor.campaign.reward.show.tabs.story')
+            span.fa.fa-chevron-right.pull-right.arrow
+        li
+          a aria-controls="rewards" role="tab" data-toggle="tab" href="#rewards"
+            strong 3
+            '&nbsp;
+            = I18n.t('investor.campaign.reward.show.tabs.rewards')
+            span.fa.fa-chevron-right.pull-right.arrow
+        li
+          a aria-controls="funding" role="tab" data-toggle="tab" href="#funding"
+            strong 4
+            '&nbsp;
+            = I18n.t('investor.campaign.reward.show.tabs.funding')
+            span.fa.fa-chevron-right.pull-right.arrow
+        li
+          a aria-controls="extra" role="tab" data-toggle="tab" href="#extra"
+            strong 5
+            '&nbsp;
+            = I18n.t('investor.campaign.reward.show.tabs.extra')
+            span.fa.fa-chevron-right.pull-right.arrow
+  .col-sm-9.col-md-6.well.tab-content
+    .step.tab-pane#basics role="tabpanel"
+      div class="form-group"
+        = label_tag :tagline
+          = I18n.t('investor.campaign.reward.show.tagline')
+        br/
+        = @campaign.tagline
+
+      div class="form-group"
+        div.row
+          .col-md-4
+            a.thumbnail href="#"
+              = display_campaign_img(@campaign, :card_image)
+
+      div class="form-group"
+        = label_tag :category
+          = I18n.t('investor.campaign.reward.show.category')
+        br/
+        = @campaign.category
+
+      div class="form-group"
+        = label_tag :tag_list
+          = I18n.t('investor.campaign.reward.show.tag_list')
+        br/
+        = @campaign.tag_list
+
+      div class="form-group"
+        = I18n.t('investor.campaign.reward.show.deadline_hint_start')
+        = @campaign.deadline
+        = I18n.t('investor.campaign.reward.show.deadline_hint_end')
+
+    .step.tab-pane#story role="tabpanel"
+      / div class="form-group"
+      /   = I18n.t('investor.campaign.reward.show.video_url')
+      /   = @campaign.video_url
+      div class="form-group"
+        = label_tag :pitch_image
+          = I18n.t('investor.campaign.reward.show.pitch_image')
+        br/
+        div.row
+          .col-md-4
+            a.thumbnail href="#"
+              = display_campaign_img(@campaign, :pitch_image)
+      div class="form-group"
+        = label_tag :pitch
+          = I18n.t('investor.campaign.reward.show.pitch')
+        br/
+        = @campaign.pitch
+
+
+    .step.tab-pane#rewards role="tabpanel"
+
+    .step.tab-pane#funding role="tabpanel"
+      div.funding_type class="form-group"
+        = label_tag :funding_type
+          = I18n.t('investor.campaign.reward.show.funding_type')
+        br/
+        = @campaign.funding_type
+
+    .step.tab-pane#extra role="tabpanel"
+      div class="form-group"
+        = label_tag :custom_short_url
+          = I18n.t('investor.campaign.reward.show.custom_short_url')
+        '&nbsp;
+        = link_to @campaign.custom_short_url, @campaign.custom_short_url, target: '_blank'
+      div class="form-group"
+        = label_tag :facebook
+          .fa.fa-facebook
+          '&nbsp;
+          = I18n.t('investor.campaign.reward.show.facebook')
+        '&nbsp;
+        = link_to @campaign.facebook, @campaign.facebook, target: '_blank'
+      div class="form-group"
+        = label_tag :facebook_shared_image
+          = I18n.t('investor.campaign.reward.show.facebook_shared_image')
+        br/
+        div.row
+          .col-md-4
+            a.thumbnail href="#"
+              = display_campaign_img(@campaign, :facebook_shared_image)
+      div class="form-group"
+        = label_tag :twitter
+          .fa.fa-twitter
+          '&nbsp;
+          = I18n.t('investor.campaign.reward.show.twitter')
+        '&nbsp;
+        = link_to @campaign.twitter, @campaign.twitter, target: '_blank'
+      div class="form-group"
+        = label_tag :youtube
+          .fa.fa-youtube
+          '&nbsp;
+          = I18n.t('investor.campaign.reward.show.youtube')
+        '&nbsp;
+        = link_to @campaign.youtube, @campaign.youtube, target: '_blank'
+      div class="form-group"
+        = label_tag :website
+          = I18n.t('investor.campaign.reward.show.website')
+        '&nbsp;
+        = link_to @campaign.website, @campaign.website, target: '_blank'
+
+coffee:
+
+  $('.left-bar a').click (e) ->
+    e.preventDefault()
+    $('.left-bar').find('a').removeClass('active')
+    $(e.target).addClass('active')
+  $('.left-bar a:first').click()
+

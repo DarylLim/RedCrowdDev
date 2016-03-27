@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20160324134614) do
     t.decimal  "decimal",               precision: 8, scale: 2
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
-    t.string   "status"
     t.text     "tagline"
     t.string   "card_image"
     t.string   "category"
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160324134614) do
     t.string   "youtube"
     t.string   "website"
     t.string   "custom_short_url"
+    t.string   "status"
     t.string   "pitch_image"
     t.text     "pitch"
   end

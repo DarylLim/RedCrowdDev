@@ -1,4 +1,4 @@
-h1 = I18n.t('forms.campaign.creator.form_title')
+h1 = I18n.t('investor.campaign.creator.form.form_title')
 
 br
 br
@@ -12,31 +12,31 @@ br
               li = msg
       div class="form-group"
         = f.label :amount_of_funding
-          = I18n.t('forms.campaign.creator.amount_of_funding')
+          = I18n.t('investor.campaign.creator.form.amount_of_funding')
         = f.text_field :amount_of_funding, class: 'form-control'
-        small = I18n.t('forms.campaign.creator.amount_of_funding_hint')
+        small = I18n.t('investor.campaign.creator.form.amount_of_funding_hint')
 
       div class="form-group"
         = f.label :title
-          = I18n.t('forms.campaign.creator.title')
+          = I18n.t('investor.campaign.creator.form.title')
         = f.text_field :title, class: 'form-control'
 
       div class="form-group"
         = f.label :company_id
-          = I18n.t('forms.campaign.creator.company_id')
+          = I18n.t('investor.campaign.creator.form.company_id')
         = f.collection_select :company_id, current_user.companies, :id, :name, {selected: params[:company_id]}, class: 'form-control'
 
       div class="form-group"
         = f.label :kind
-          = I18n.t('forms.campaign.creator.kind')
+          = I18n.t('investor.campaign.creator.form.kind')
         br/
         = f.hidden_field :kind, value: ::Campaign::REWARD
         div.btn.btn-default.radio-button.active data-value="#{::Campaign::REWARD}"
-          = I18n.t('forms.campaign.creator.kinds.reward')
+          = I18n.t('investor.campaign.creator.form.kinds.reward')
         div.btn.btn-default.radio-button data-value="#{::Campaign::DEBT}"
-          = I18n.t('forms.campaign.creator.kinds.debt')
+          = I18n.t('investor.campaign.creator.form.kinds.debt')
         div.btn.btn-default.radio-button data-value="#{::Campaign::EQUITY}"
-          = I18n.t('forms.campaign.creator.kinds.equity')
+          = I18n.t('investor.campaign.creator.form.kinds.equity')
 
 
-      = f.submit I18n.t('forms.campaign.creator.submit'), class: 'btn btn-default'
+      = f.submit I18n.t('investor.campaign.creator.form.submit'), class: 'btn btn-default'

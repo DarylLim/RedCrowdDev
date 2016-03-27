@@ -28,6 +28,18 @@ Rails.application.routes.draw do
         post :moderate, action: :submit
       end
     end
+    resources :rewards, only: [] do
+      collection do
+        get :pending
+        get :approved
+        get :rejected
+      end
+
+      member do
+        get :moderate
+        post :moderate, action: :submit
+      end
+    end
   end
 
 end

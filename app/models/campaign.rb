@@ -13,6 +13,7 @@ class Campaign < ActiveRecord::Base
   mount_uploader :pitch_image, ::PitchImageUploader
 
   has_many :rejection_reasons, as: :objective
+  belongs_to :company
 
   validates :kind, inclusion: TYPES
 end
