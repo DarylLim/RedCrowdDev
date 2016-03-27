@@ -26,7 +26,7 @@ class Investor::CampaignsController < Investor::BaseController
     @campaign = Campaign.find(params[:id])
     @form = "RedCrowd::Investor::Campaign::#{@campaign.kind.camelize}".constantize.new(params["red_crowd_investor_campaign_#{@campaign.kind}"].merge({campaign: @campaign}))
     if @form.save
-      redirect_to action: :show, id: @form.campaign.id
+      redirect_to investor_company_path(@form.campaign.company, tab: :campaigns)
     else
       render :edit
     end

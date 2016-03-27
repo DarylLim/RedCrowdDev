@@ -16,8 +16,8 @@ RSpec.describe RejectionReason, type: :model do
       rejection_reason.content = nil
     end
 
-    it 'has blank company' do
-      rejection_reason.company = nil
+    it 'has blank objective' do
+      rejection_reason.objective = nil
     end
   end
   

@@ -1,7 +1,9 @@
 FactoryGirl.define do
   factory :rejection_reason do
     content { Forgery('lorem_ipsum').paragraph }
-    association :company
+    after(:build) do |rr|
+      rr.objective ||= FactoryGirl.create(:company)
+    end
   end
 
 end

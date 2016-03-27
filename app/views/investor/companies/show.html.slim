@@ -1,26 +1,32 @@
+- if params[:tab].present?
+  - active_tabs = {params[:tab].to_sym => 'active'}
+- else
+  - active_tabs = {basic_info: 'active'}
+  
+
 div
   ul class="nav nav-tabs" role="tablist"
-    li role="presentation" class="active"
+    li role="presentation" class="#{active_tabs[:basic_info]}"
       a href="#basic_info" aria-controls="basic_info" role="tab" data-toggle="tab"
         = t("investor.companies.show.tabs.basic_info")
-    li role="presentation"
+    li role="presentation" class="#{active_tabs[:funding_histories]}"
       a href="#funding_histories" aria-controls="funding_histories" role="tab" data-toggle="tab"
         = t("investor.companies.show.tabs.funding_histories")
 
-    li role="presentation"
+    li role="presentation" class="#{active_tabs[:team_info]}"
       a href="#team_info" aria-controls="team_info" role="tab" data-toggle="tab"
         = t("investor.companies.show.tabs.team_info")
     - unless @company.approved?
-      li role="presentation"
+      li role="presentation" class="#{active_tabs[:moderation_history]}"
         a href="#moderation_history" aria-controls="moderation_history" role="tab" data-toggle="tab"
           = t("investor.companies.show.tabs.moderation_history")
     - unless @company.campaigns.blank?
-      li role="presentation"
+      li role="presentation" class="#{active_tabs[:campaigns]}"
         a href="#campaigns" aria-controls="campaigns" role="tab" data-toggle="tab"
           = t("investor.companies.show.tabs.campaigns")
   br
   .tab-content
-    div role="tabpanel" class="tab-pane active" id="basic_info"
+    div role="tabpanel" class="tab-pane #{active_tabs[:basic_info]}" id="basic_info"
       .row
         .col-xs-4
           dl.dl-horizontal
@@ -56,7 +62,7 @@ div
           a.thumbnail href='#'
             img src="#{@company.logo.to_s}"
 
-    div role='tabpanel' class='tab-pane' id="funding_histories"
+    div role='tabpanel' class="tab-pane #{active_tabs[:funding_histories]}" id="funding_histories"
       table.table
         - @company.funding_histories.each do |funding_history|
           tr
@@ -64,7 +70,7 @@ div
             td = funding_history.amount
             td = funding_history.date
 
-    div role="tabpanel" class="tab-pane" id="team_info"
+    div role="tabpanel" class="tab-pane #{active_tabs[:team_info]}" id="team_info"
       .row
         - @company.employees.each do |employee|
           .col-sm-6.col-md-4
@@ -75,7 +81,7 @@ div
                 p = employee.position
                 p = employee.biography
 
-    div role="tabpanel" class="tab-pane" id="moderation_history"
+    div role="tabpanel" class="tab-pane #{active_tabs[:moderation_history]}" id="moderation_history"
       table.table.table-bordered
         thead
           tr
@@ -89,7 +95,7 @@ div
               td = rejection_reason.content
               td = rejection_reason.created_at
 
-    div role="tabpanel" class="tab-pane" id="campaigns"
+    div role="tabpanel" class="tab-pane #{active_tabs[:campaigns]}" id="campaigns"
       table.table.table-bordered
         thead
           tr
