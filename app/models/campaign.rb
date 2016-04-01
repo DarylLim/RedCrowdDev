@@ -1,5 +1,6 @@
 class Campaign < ActiveRecord::Base
   acts_as_taggable
+  serialize :video_urls
 
   include Statusable
 

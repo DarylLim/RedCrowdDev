@@ -34,7 +34,7 @@ class Admin::RewardsController < Admin::BaseController
 
     respond_to do |format|
       if @moderator.moderate!
-        format.html { redirect_to pending_admin_campaigns_path, notice: t("admin.notices.campaign.#{@campaign.status}") }
+        format.html { redirect_to pending_admin_rewards_path, notice: t("admin.notices.campaign.#{@campaign.status}") }
       else
         format.html { render :moderate }
       end

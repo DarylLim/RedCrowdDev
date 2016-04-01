@@ -23,6 +23,13 @@ RSpec.describe RedCrowd::Investor::Campaign::Reward do
       it 'returns true' do
         expect(subject.save.class).to eq(Campaign)
       end
+
+      it 'video_urls saves as array' do
+        video_array = ['http://youtube.com/embed/testvideo', 'youtube.com/v/test', 'youtu.be/test2']
+        @attributes[:video_urls] = video_array
+        subject.save
+        expect(campaign.video_urls).to eq(video_array)
+      end
     end
 
     context 'invalid_attributes' do
@@ -53,6 +60,11 @@ RSpec.describe RedCrowd::Investor::Campaign::Reward do
       end
 
       context '#STORY' do
+        it 'has wrong video_urls array' do
+          video_array = ['first_video.com, second_video.com']
+          @attributes[:video_urls] = video_array
+        end
+
         pending 'invalid if blank campaign pick image or video'
       end
 

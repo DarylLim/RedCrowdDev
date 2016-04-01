@@ -4,6 +4,9 @@ FactoryGirl.define do
     state "new"
 
     kind { Campaign::REWARD }
+    factory :approved_reward do
+      status {Campaign::APPROVED}
+    end
   end
 
 end

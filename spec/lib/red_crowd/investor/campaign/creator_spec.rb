@@ -7,9 +7,9 @@ RSpec.describe RedCrowd::Investor::Campaign::Creator do
     {
       title: 'Title',
       amount_of_funding: 500,
-      company: company,
+      company_id: company.id,
       kind: Campaign::REWARD,
-    }  
+    }
   end
 
   let(:invalid_attributes) do
@@ -34,7 +34,7 @@ RSpec.describe RedCrowd::Investor::Campaign::Creator do
 
       it 'adds new record to campaign' do
         expect do
-          subject.save 
+          subject.save
         end.to change(Campaign, :count).by(1)
       end
 
@@ -51,7 +51,7 @@ RSpec.describe RedCrowd::Investor::Campaign::Creator do
 
       it 'does not add new record to campaign' do
         expect do
-          subject.save 
+          subject.save
         end.to change(Campaign, :count).by(0)
       end
 
@@ -63,6 +63,6 @@ RSpec.describe RedCrowd::Investor::Campaign::Creator do
     end
 
   end
-  
+
 end
 

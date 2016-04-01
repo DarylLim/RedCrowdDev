@@ -89,9 +89,21 @@ br
           a.btn.btn-default href='#'
             = I18n.t('investor.campaign.reward.form.image')
         div class="form-group"
-          = f.label :video_url
+          = label_tag :video_url
             = I18n.t('investor.campaign.reward.form.video_url')
-          = f.text_field :video_url, class: 'form-control'
+          br/
+          = text_field_tag :video_url, nil, class: 'form-control video-source', style: "display: inline-block; width: 75%"
+          a.btn.btn-default.add-video.pull-right href='#' style="display:inline-block;width:20%"
+            ''Add
+          div.video-urls
+            - f.object.campaign.video_urls.each do |url|
+              div.video-url-line
+                input name="red_crowd_investor_campaign_reward[video_urls][]" type="hidden" value="#{url}"
+                p
+                  a.fa.fa-remove.remove-video href="#"
+                  '&nbsp;
+                  =url
+
         div class="form-group"
           = f.label :pitch_image
             = I18n.t('investor.campaign.reward.form.pitch_image')
@@ -183,3 +195,20 @@ coffee:
     $(e.target).parent().find('input[type=hidden]').val($(e.target).data('value'))
   div = $('#funding .funding_type')
   div.find("[data-value=#{div.find('input[type=hidden]').val()}]").click() if div.find('input[type=hidden]').val()
+
+  $('.add-video').click (e) ->
+    e.preventDefault()
+    scope = $(e.target).closest('.form-group')
+    value = scope.find('.video-source').val()
+    scope.find('.video-source').val('')
+    scope.find('.video-urls').append(videoUrl(value))
+
+  $(document).on 'click', '.remove-video', (e) ->
+    e.preventDefault()
+    $(e.target).closest('.video-url-line').remove()
+
+  videoUrl = (url) ->
+    "<div class='video-url-line'>
+     <input type='hidden' name='red_crowd_investor_campaign_reward[video_urls][]' value='#{url}'>
+     <p><a href='#' class='fa fa-remove remove-video'></a>&nbsp;#{url}</p>
+     </div>"

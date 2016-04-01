@@ -195,6 +195,8 @@ en:
           youtube: "Youtube"
           website: "Website"
           submit: 'Update campaign'
+          errors:
+            wrong_video_urls: 'You can add only youtube video.'
         show:
           tabs:
             basics: 'Basics'

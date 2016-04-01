@@ -11,10 +11,22 @@ module ApplicationHelper
       when "admin/rewards"
         @topbar_class_list[:"admin_#{params[:action]}_rewards"] = 'active'
         @topbar_class_list[:"admin_rewards_root"] = 'active'
+      when "investor/main"
+        @topbar_class_list[:investor_root] = 'active'
+      when "investor/companies"
+        @topbar_class_list[:"investor_#{params[:action]}_companies"] = 'active'
+        @topbar_class_list[:browse_companies] = 'active'
+      when "investor/campaigns"
+        @topbar_class_list[:"investor_#{params[:action]}_campaigns"] = 'active'
+        @topbar_class_list[:browse_campaigns] = 'active'
       when "users/sessions"
         @topbar_class_list[:login] = 'active'
       when "users/registrations"
         @topbar_class_list[:sign_up] = 'active'
+    end
+    if @topbar_class_list == {}
+      action = ([params[:action]] + params[:controller].split('/')).join('_')
+      @topbar_class_list[action.to_sym] = 'active'
     end
     @topbar_class_list
   end

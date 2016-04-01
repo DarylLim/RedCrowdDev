@@ -73,6 +73,14 @@ br
       /   = I18n.t('investor.campaign.reward.show.video_url')
       /   = @campaign.video_url
       div class="form-group"
+        = label_tag :video_url
+          = I18n.t('investor.campaign.reward.form.video_url')
+        br/
+        div.video-urls
+          - @campaign.video_urls.each do |url|
+            input name="red_crowd_investor_campaign_reward[video_urls][]" type="hidden" value="#{url}"
+            p.video-url-line =url
+      div class="form-group"
         = label_tag :pitch_image
           = I18n.t('investor.campaign.reward.show.pitch_image')
         br/

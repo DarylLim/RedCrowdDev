@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324134614) do
+ActiveRecord::Schema.define(version: 20160328071803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160324134614) do
     t.string   "status"
     t.string   "pitch_image"
     t.text     "pitch"
+    t.text     "video_urls"
   end
 
   create_table "companies", force: :cascade do |t|
