@@ -96,7 +96,7 @@ br
           a.btn.btn-default.add-video.pull-right href='#' style="display:inline-block;width:20%"
             ''Add
           div.video-urls
-            - f.object.campaign.video_urls.each do |url|
+            - f.object.campaign.video_urls.try(:each) do |url|
               div.video-url-line
                 input name="red_crowd_investor_campaign_reward[video_urls][]" type="hidden" value="#{url}"
                 p
